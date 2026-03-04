@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OurHOAFuture.com | Financial Transparency & Documentation</title>
+  <meta name="description" content="A resident information hub providing documented analysis of budgets, major projects, and expenditures affecting our condominium community." />
+
+  <style>
+    :root{
+      --navy:#0B1F3B;
+      --slate:#2E4A6B;
+      --ink:#1A1A1A;
+      --muted:#5B6675;
+      --bg:#FFFFFF;
+      --panel:#F5F7FA;
+      --border:#D8DEE7;
+      --accent:#C9A227;
+      --radius:14px;
+      --shadow: 0 10px 25px rgba(11,31,59,.08);
+      --max: 1120px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", Helvetica;
+      color:var(--ink);
+      background:var(--bg);
+      line-height:1.45;
+    }
+    a{color:var(--slate); text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{
+      position:sticky; top:0; z-index:50;
+      background:rgba(255,255,255,.92);
+      backdrop-filter: blur(8px);
+      border-bottom:1px solid var(--border);
+    }
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:800; letter-spacing:.2px;
+      color:var(--navy);
+      white-space:nowrap;
+    }
+    .badge{
+      font-size:12px; font-weight:700;
+      padding:4px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      color:var(--muted);
+      background:var(--panel);
+    }
+    nav{
+      display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end;
+      font-size:14px;
+    }
+    nav a{
+      padding:8px 10px; border-radius:10px;
+    }
+    nav a:hover{background:var(--panel); text-decoration:none}
+
+    /* Hero */
+    .hero{
+      padding:42px 0 20px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    .card{
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px;
+    }
+    h1{
+      margin:0 0 8px;
+      font-size:34px;
+      line-height:1.1;
+      color:var(--navy);
+      letter-spacing:-.5px;
+    }
+    .subhead{
+      font-size:16px;
+      color:var(--muted);
+      margin:0 0 14px;
+    }
+    .tagline{
+      display:inline-flex;
+      gap:10px;
+      flex-wrap:wrap;
+      font-weight:800;
+      color:var(--navy);
+      margin:0 0 12px;
+    }
+    .tagline span{
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#fff;
+    }
+    .cta-row{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top:14px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:#fff;
+      color:var(--navy);
+      font-weight:800;
+      font-size:14px;
+    }
+    .btn.primary{
+      background:var(--navy);
+      color:#fff;
+      border-color:var(--navy);
+    }
+    .btn.primary:hover{opacity:.95; text-decoration:none}
+    .btn:hover{background:#fff; text-decoration:none; border-color:#c9d2df}
+
+    /* Right hero box */
+    .qrbox{
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:10px;
+      min-height:100%;
+    }
+    .qr{
+      width:100%;
+      aspect-ratio:1/1;
+      background:#fff;
+      border:1px dashed #cfd8e6;
+      border-radius:12px;
+      display:flex; align-items:center; justify-content:center;
+      color:var(--muted);
+      font-weight:700;
+      padding:10px;
+      text-align:center;
+    }
+    .small{
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    /* Section layout */
+    section{padding:26px 0}
+    .section-title{
+      display:flex; align-items:baseline; justify-content:space-between;
+      gap:12px;
+      margin-bottom:14px;
+    }
+    h2{
+      margin:0;
+      font-size:22px;
+      color:var(--navy);
+      letter-spacing:-.2px;
+    }
+    .hint{font-size:13px; color:var(--muted)}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+    }
+    .col-4{grid-column: span 4;}
+    .col-6{grid-column: span 6;}
+    .col-8{grid-column: span 8;}
+    .col-12{grid-column: span 12;}
+
+    .tile{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:16px;
+    }
+    .tile h3{
+      margin:0 0 6px;
+      font-size:16px;
+      color:var(--navy);
+    }
+    .tile p{margin:0; color:var(--muted); font-size:14px}
+    .tile .link{margin-top:10px; display:inline-block; font-weight:800}
+
+    ul{margin:10px 0 0 18px; color:var(--muted)}
+    .callout{
+      border-left:4px solid var(--accent);
+      padding:12px 14px;
+      background: #fff;
+      border-radius:12px;
+      border:1px solid var(--border);
+    }
+
+    /* Tables */
+    table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      overflow:hidden;
+      border:1px solid var(--border);
+      border-radius:12px;
+      background:#fff;
+      font-size:14px;
+    }
+    th, td{
+      padding:10px 10px;
+      border-bottom:1px solid var(--border);
+      vertical-align:top;
+    }
+    th{
+      text-align:left;
+      color:var(--navy);
+      background:var(--panel);
+      font-weight:800;
+    }
+    tr:last-child td{border-bottom:none}
+
+    footer{
+      padding:26px 0 40px;
+      border-top:1px solid var(--border);
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns: 1fr;}
+      .col-4,.col-6,.col-8{grid-column: span 12;}
+      nav{justify-content:flex-start}
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        OurHOAFuture.com
+        <span class="badge">Resident Information Hub</span>
+      </div>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#financial">Financial Analysis</a>
+        <a href="#projects">Project Reviews</a>
+        <a href="#legal">Legal & Admin</a>
+        <a href="#documents">Documents</a>
+        <a href="#about">About</a>
+        <a href="#espanol">Español</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main id="home" class="wrap">
+  <div class="hero">
+    <div class="hero-grid">
+      <div class="card">
+        <h1>OurHOAFuture.com</h1>
+        <div class="tagline">
+          <span>Transparency</span>
+          <span>Stability</span>
+          <span>Responsible Financial Stewardship</span>
+        </div>
+        <p class="subhead">
+          This website provides documented analysis of budgets, major projects, and expenditures affecting our condominium community,
+          so residents can better understand how association funds are planned and allocated.
+        </p>
+
+        <div class="cta-row">
+          <a class="btn primary" href="#financial">View Financial Analysis</a>
+          <a class="btn" href="#projects">Review Project Costs</a>
+          <a class="btn" href="#documents">Documents & Records</a>
+        </div>
+
+        <div style="margin-top:14px" class="callout">
+          <strong style="color:var(--navy)">Quick start:</strong>
+          <span class="small">Begin with Financial Analysis, then review Project Costs and supporting Documents.</span>
+        </div>
+      </div>
+
+      <div class="card qrbox">
+        <div>
+          <div style="font-weight:900; color:var(--navy); margin-bottom:6px;">Scan to visit</div>
+          <div class="qr">
+            QR PLACEHOLDER<br/>
+            (Replace with a real QR image)
+          </div>
+        </div>
+        <div class="small">
+          Tip: In Canva or any QR tool, generate a QR for:
+          <strong>https://ourhoafuture.com</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="section-title">
+      <h2>What you’ll find here</h2>
+      <div class="hint">Clear summaries, charts, and source documents</div>
+    </div>
+
+    <div class="grid">
+      <div class="tile col-4">
+        <h3>Budget Analysis</h3>
+        <p>Year-to-year trends, category changes, and observations.</p>
+        <a class="link" href="#financial">View analysis →</a>
+      </div>
+      <div class="tile col-4">
+        <h3>Project Reviews</h3>
+        <p>Cost breakdowns for major projects with supporting records.</p>
+        <a class="link" href="#projects">See projects →</a>
+      </div>
+      <div class="tile col-4">
+        <h3>Legal & Administrative Expenses</h3>
+        <p>Summaries of legal/admin costs over time with documentation.</p>
+        <a class="link" href="#legal">Review totals →</a>
+      </div>
+
+      <div class="tile col-4">
+        <h3>Documents & Records</h3>
+        <p>Budgets, contracts, invoices, notices, and meeting materials.</p>
+        <a class="link" href="#documents">Open library →</a>
+      </div>
+      <div class="tile col-4">
+        <h3>About</h3>
+        <p>Site purpose and background (financial oversight focus).</p>
+        <a class="link" href="#about">Read more →</a>
+      </div>
+      <div class="tile col-4">
+        <h3>Español</h3>
+        <p>Resumen en español y enlaces principales.</p>
+        <a class="link" href="#espanol">Ver en español →</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <h2>Key topics residents are asking about</h2>
+      <div class="hint">Facts-first and document-backed</div>
+    </div>
+    <div class="card">
+      <ul>
+        <li>Budget trends and assessment increases</li>
+        <li>Major project costs and cost breakdowns (e.g., garage work)</li>
+        <li>Legal and administrative expenses over time</li>
+        <li>Access to records, contracts, and supporting documents</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Financial Analysis -->
+  <section id="financial">
+    <div class="section-title">
+      <h2>Financial Analysis</h2>
+      <div class="hint">Add budget tables, charts, and sources here</div>
+    </div>
+
+    <div class="grid">
+      <div class="card col-6">
+        <h3 style="margin:0 0 8px; color:var(--navy)">Budget trend (placeholder)</h3>
+        <div class="small">Replace this block with a Canva chart image or an embedded chart later.</div>
+        <div style="margin-top:10px; height:220px; border:1px dashed #cfd8e6; border-radius:12px; background:#fff; display:flex; align-items:center; justify-content:center; color:var(--muted); font-weight:700;">
+          Chart placeholder
+        </div>
+      </div>
+
+      <div class="card col-6">
+        <h3 style="margin:0 0 8px; color:var(--navy)">Budget observations (placeholder)</h3>
+        <ul>
+          <li>Summarize top category changes year-over-year.</li>
+          <li>Call out line items that changed materially.</li>
+          <li>Link to source documents.</li>
+        </ul>
+      </div>
+
+      <div class="card col-12">
+        <h3 style="margin:0 0 10px; color:var(--navy)">Budget anomaly table (template)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Category / Line Item</th>
+              <th>Prior Period</th>
+              <th>Current Period</th>
+              <th>Change</th>
+              <th>Notes</th>
+              <th>Source</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Legal expenses</td>
+              <td>$—</td>
+              <td>$—</td>
+              <td>$—</td>
+              <td>Replace with your analysis note.</td>
+              <td><a href="#documents">Doc link</a></td>
+            </tr>
+            <tr>
+              <td>Repairs / Maintenance</td>
+              <td>$—</td>
+              <td>$—</td>
+              <td>$—</td>
+              <td>Replace with your analysis note.</td>
+              <td><a href="#documents">Doc link</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="section-title">
+      <h2>Project Reviews</h2>
+      <div class="hint">Cost breakdowns + supporting docs</div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin:0 0 10px; color:var(--navy)">Garage repair (template)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Line</th>
+            <th>Amount</th>
+            <th>Notes</th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Contract amount</td>
+            <td>$—</td>
+            <td>As communicated / stated</td>
+            <td><a href="#documents">Doc link</a></td>
+          </tr>
+          <tr>
+            <td>Additional labor / safety</td>
+            <td>$—</td>
+            <td>Additional charges</td>
+            <td><a href="#documents">Doc link</a></td>
+          </tr>
+          <tr>
+            <td><strong>Total</strong></td>
+            <td><strong>$—</strong></td>
+            <td>Replace with your total</td>
+            <td><a href="#documents">Doc link</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Legal -->
+  <section id="legal">
+    <div class="section-title">
+      <h2>Legal & Administrative Expenses</h2>
+      <div class="hint">Summaries and year totals</div>
+    </div>
+
+    <div class="grid">
+      <div class="card col-6">
+        <h3 style="margin:0 0 8px; color:var(--navy)">Legal expenses by year (placeholder)</h3>
+        <div style="margin-top:10px; height:220px; border:1px dashed #cfd8e6; border-radius:12px; background:#fff; display:flex; align-items:center; justify-content:center; color:var(--muted); font-weight:700;">
+          Chart placeholder
+        </div>
+      </div>
+      <div class="card col-6">
+        <h3 style="margin:0 0 8px; color:var(--navy)">Summary (placeholder)</h3>
+        <ul>
+          <li>Totals over time</li>
+          <li>Major drivers (if documented)</li>
+          <li>Links to invoices/records</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Documents -->
+  <section id="documents">
+    <div class="section-title">
+      <h2>Documents & Records</h2>
+      <div class="hint">Upload PDFs and link them here</div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin:0 0 10px; color:var(--navy)">Document library (template)</h3>
+      <ul>
+        <li><a href="#">Budget 2023 (PDF)</a></li>
+        <li><a href="#">Budget 2024 (PDF)</a></li>
+        <li><a href="#">Garage project invoice (PDF)</a></li>
+        <li><a href="#">Legal invoices summary (PDF)</a></li>
+        <li><a href="#">Meeting minutes (PDF)</a></li>
+      </ul>
+      <p class="small">Tip: Store documents in GitHub repo, Google Drive (public links), or another host, then link here.</p>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="section-title">
+      <h2>About</h2>
+      <div class="hint">Purpose + background</div>
+    </div>
+
+    <div class="card">
+      <p>
+        This website organizes resident-facing financial analysis and supporting documents to improve clarity around budgets,
+        major projects, and expenditures impacting our community.
+      </p>
+      <p class="small">
+        For questions or to share documents, add a contact method here (email form or a simple mailto link).
+      </p>
+    </div>
+  </section>
+
+  <!-- Spanish -->
+  <section id="espanol">
+    <div class="section-title">
+      <h2>Español</h2>
+      <div class="hint">Resumen y enlaces principales</div>
+    </div>
+
+    <div class="card">
+      <p><strong>Propósito del sitio:</strong> Este sitio reúne análisis y documentación sobre presupuestos, proyectos y gastos para que los residentes comprendan mejor cómo se planifican y administran los fondos de la asociación.</p>
+      <ul>
+        <li><a href="#financial">Análisis financiero</a></li>
+        <li><a href="#projects">Revisión de proyectos</a></li>
+        <li><a href="#legal">Gastos legales y administrativos</a></li>
+        <li><a href="#documents">Documentos y registros</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between;">
+      <div>© <span id="y"></span> OurHOAFuture.com — Informational site for residents. Content includes analysis and links to supporting documents.</div>
+      <div><a href="#home">Back to top ↑</a></div>
+    </div>
+  </div>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</footer>
+
+</body>
+</html>
