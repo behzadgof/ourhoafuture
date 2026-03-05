@@ -1,4 +1,2 @@
-project_name,stated_amount,additional_amount,total_amount,notes,source_url,date,vendor,category
-Garage Structural Repair,450000,120000,570000,"Scope expanded after structural assessment",https://example.org/docs/garage-repair-contract.pdf,2025-11-10,Metro Engineering,Capital
-Roof Replacement Phase 1,380000,45000,425000,"Additional waterproofing included",https://example.org/docs/roof-phase1.pdf,2025-08-05,Sunstate Roofing,Capital
-Lobby Renovation,210000,15000,225000,"Lighting and finish upgrades",https://example.org/docs/lobby-renovation.pdf,2025-06-14,Coastal Interiors,Operations
+project_name,year,initial_contract,additional_costs,total_project_cost,notes,source_reference
+Garage Parking Repair,2025,35000,60500,95500,"Initial contract amount communicated ~$35K. Additional labor and safety-related work increased the total project cost to approximately $95K.","HOA portal documents and management communications available to residents"

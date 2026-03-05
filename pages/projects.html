@@ -30,34 +30,94 @@
 </header>
 
 <main class="wrap">
-  <section id="garage-spotlight" hidden>
+  <section>
     <div class="section-title">
-      <h2>Garage Repair Spotlight</h2>
-      <div class="hint">Highlighted documented project</div>
+      <h2>Garage Parking Project &mdash; Cost Summary</h2>
+      <div class="hint">High-level summary based on figures available to residents</div>
     </div>
-    <div class="card" id="garage-card"></div>
+
+    <div class="card">
+      <p>
+        This section summarizes the cost structure of the garage repair project introduced in 2025. The figures below reflect high-level totals derived from association records available to residents.
+      </p>
+
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody id="garage-breakdown-body">
+            <tr><td colspan="2" class="small">Loading project summary...</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <ul id="garage-notes">
+        <li>The original contract amount communicated was approximately $35,000.</li>
+        <li>Additional labor and safety-related costs increased the total project cost.</li>
+        <li>The total project cost for the project is approximately $95,000.</li>
+        <li>Supporting records are available to residents through the HOA portal and management.</li>
+      </ul>
+
+      <div class="cost-bars" id="garage-bars">
+        <div class="bar-row">
+          <div class="bar-label">Initial Contract</div>
+          <div class="bar-track"><div class="bar-fill" id="bar-initial"></div></div>
+          <div class="bar-value" id="bar-initial-value">$35K</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Additional Costs</div>
+          <div class="bar-track"><div class="bar-fill" id="bar-additional"></div></div>
+          <div class="bar-value" id="bar-additional-value">$60.5K</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Total Project Cost</div>
+          <div class="bar-track"><div class="bar-fill" id="bar-total"></div></div>
+          <div class="bar-value" id="bar-total-value">$95K</div>
+        </div>
+      </div>
+
+      <details style="margin-top:14px;">
+        <summary><strong>Method</strong></summary>
+        <p class="small" style="margin-top:10px;">Stated totals are based on board/management communications; total estimates are based on recorded totals available to residents.</p>
+      </details>
+    </div>
   </section>
 
   <section>
     <div class="section-title">
-      <h2>Project Reviews</h2>
-      <div class="hint">Summarized costs as reflected in records</div>
+      <h2>Project Summaries</h2>
+      <div class="hint">According to association records and resident-available summaries</div>
     </div>
 
     <div class="card">
       <div class="toolbar">
-        <input id="project-search" class="search-input" type="search" placeholder="Search project, notes, or vendor" />
+        <input id="project-search" class="search-input" type="search" placeholder="Search project name or notes" />
         <select id="project-sort" class="sort-select">
-          <option value="total-desc">Total (desc)</option>
-          <option value="total-asc">Total (asc)</option>
+          <option value="total-desc">Total project cost (desc)</option>
+          <option value="total-asc">Total project cost (asc)</option>
+          <option value="name-asc">Project name (A-Z)</option>
         </select>
       </div>
 
       <div class="table-scroll">
         <table>
-          <thead id="projects-head"></thead>
+          <thead>
+            <tr>
+              <th>Project</th>
+              <th>Year</th>
+              <th>Initial Contract</th>
+              <th>Additional Costs</th>
+              <th>Total Project Cost</th>
+              <th>Notes</th>
+              <th>Source Reference</th>
+            </tr>
+          </thead>
           <tbody id="projects-body">
-            <tr><td class="small">Loading data...</td></tr>
+            <tr><td colspan="7" class="small">Loading projects...</td></tr>
           </tbody>
         </table>
       </div>
@@ -69,7 +129,7 @@
 <footer>
   <div class="wrap">
     <div class="footer-row">
-      <div>&copy; <span id="y"></span> OurHOAFuture.com &mdash; Informational site for residents. Content includes analysis and links to supporting documents.</div>
+      <div>&copy; <span id="y"></span> OurHOAFuture.com &mdash; Informational site for residents. Content includes analysis and links to supporting documents.<br />Disclaimer: This website provides high-level summaries and analysis for informational purposes. Supporting records referenced are available to residents through official association channels.</div>
       <div class="footer-links">
         <a href="contact.html">Contact</a>
         <a href="#top">Back to top &uarr;</a>
@@ -82,104 +142,102 @@
 
     const searchEl = document.getElementById("project-search");
     const sortEl = document.getElementById("project-sort");
-    const headEl = document.getElementById("projects-head");
     const bodyEl = document.getElementById("projects-body");
     const statusEl = document.getElementById("projects-status");
-    const garageSection = document.getElementById("garage-spotlight");
-    const garageCard = document.getElementById("garage-card");
+    const garageBody = document.getElementById("garage-breakdown-body");
 
-    let rows = [];
-    let hasDate = false;
-    let hasVendor = false;
-
-    function headerHtml() {
-      const cols = ["Project"];
-      if (hasDate) cols.push("Date");
-      cols.push("Stated Amount", "Additional Amount", "Total Amount");
-      if (hasVendor) cols.push("Vendor");
-      cols.push("Notes", "Source", "Details");
-      return `<tr>${cols.map((c) => `<th>${c}</th>`).join("")}</tr>`;
+    function compactK(value) {
+      const num = SiteUtils.toNumber(value);
+      if (num === null) return "-";
+      if (num % 1000 === 0) return `$${(num / 1000).toFixed(0)}K`;
+      return `$${(num / 1000).toFixed(1)}K`;
     }
 
-    function visibleRows() {
-      let visible = SiteUtils.filterRows(rows, searchEl.value, ["project_name", "notes", "vendor"]);
+    function updateBars(row) {
+      const initial = SiteUtils.toNumber(row.initial_contract) || 0;
+      const additional = SiteUtils.toNumber(row.additional_costs) || 0;
+      const total = SiteUtils.toNumber(row.total_project_cost) || 0;
+      const max = Math.max(initial, additional, total, 1);
+
+      document.getElementById("bar-initial").style.width = `${(initial / max) * 100}%`;
+      document.getElementById("bar-additional").style.width = `${(additional / max) * 100}%`;
+      document.getElementById("bar-total").style.width = `${(total / max) * 100}%`;
+
+      document.getElementById("bar-initial-value").textContent = compactK(initial);
+      document.getElementById("bar-additional-value").textContent = compactK(additional);
+      document.getElementById("bar-total-value").textContent = compactK(total);
+    }
+
+    function renderGarageSummary(rows) {
+      const garage = rows.find((r) => (r.project_name || "").toLowerCase().includes("garage")) || rows[0];
+      if (!garage) {
+        garageBody.innerHTML = '<tr><td colspan="2" class="small">No project rows available.</td></tr>';
+        return;
+      }
+
+      garageBody.innerHTML = `
+        <tr><td>Initial Contract Amount</td><td>${SiteUtils.formatCurrency(garage.initial_contract)}</td></tr>
+        <tr><td>Additional Labor / Safety Costs</td><td>${SiteUtils.formatCurrency(garage.additional_costs)}</td></tr>
+        <tr><td>Total Project Cost</td><td>${SiteUtils.formatCurrency(garage.total_project_cost)}</td></tr>
+      `;
+
+      updateBars(garage);
+    }
+
+    function visibleRows(rows) {
+      let visible = SiteUtils.filterRows(rows, searchEl.value, ["project_name", "notes", "source_reference"]);
       visible = SiteUtils.sortRows(visible, sortEl.value, {
-        "total-desc": (a, b) => (SiteUtils.toNumber(b.total_amount) ?? Number.NEGATIVE_INFINITY) - (SiteUtils.toNumber(a.total_amount) ?? Number.NEGATIVE_INFINITY),
-        "total-asc": (a, b) => (SiteUtils.toNumber(a.total_amount) ?? Number.POSITIVE_INFINITY) - (SiteUtils.toNumber(b.total_amount) ?? Number.POSITIVE_INFINITY)
+        "total-desc": (a, b) => (SiteUtils.toNumber(b.total_project_cost) ?? Number.NEGATIVE_INFINITY) - (SiteUtils.toNumber(a.total_project_cost) ?? Number.NEGATIVE_INFINITY),
+        "total-asc": (a, b) => (SiteUtils.toNumber(a.total_project_cost) ?? Number.POSITIVE_INFINITY) - (SiteUtils.toNumber(b.total_project_cost) ?? Number.POSITIVE_INFINITY),
+        "name-asc": (a, b) => String(a.project_name || "").localeCompare(String(b.project_name || ""))
       });
       return visible;
     }
 
-    function renderGarageSpotlight() {
-      const garageRows = rows.filter((r) => (r.project_name || "").toLowerCase().includes("garage"));
-      if (!garageRows.length) {
-        garageSection.hidden = true;
-        return;
-      }
-      garageSection.hidden = false;
-      garageRows.sort((a, b) => (SiteUtils.toNumber(b.total_amount) ?? 0) - (SiteUtils.toNumber(a.total_amount) ?? 0));
-      const top = garageRows[0];
-      const source = SiteUtils.safeLink(top.source_url);
-      garageCard.innerHTML = `
-        <h3>${top.project_name || "Garage Repair"}</h3>
-        <p class="small">Total Amount: ${SiteUtils.formatCurrency(top.total_amount)}</p>
-        <p class="small">${top.notes || "No additional notes provided."}</p>
-        ${source ? `<p><a href="${source}" target="_blank" rel="noopener">View source</a></p>` : ""}
-      `;
-    }
-
-    function renderTable() {
-      const visible = visibleRows();
-      headEl.innerHTML = headerHtml();
-
+    function renderTable(rows) {
+      const visible = visibleRows(rows);
       if (!visible.length) {
-        bodyEl.innerHTML = `<tr><td colspan="${headEl.querySelectorAll("th").length}" class="small">No rows match the current search/filter.</td></tr>`;
+        bodyEl.innerHTML = '<tr><td colspan="7" class="small">No project rows match the current filter.</td></tr>';
         statusEl.textContent = `Loaded ${rows.length} row(s); showing 0.`;
         return;
       }
 
       bodyEl.innerHTML = "";
-      visible.forEach((r, idx) => {
-        const safe = SiteUtils.safeLink(r.source_url);
-        const detailId = `project-detail-${idx}`;
-        const cells = [];
-
-        cells.push(`<td>${r.project_name || "-"}</td>`);
-        if (hasDate) cells.push(`<td>${r.date || "-"}</td>`);
-        cells.push(`<td>${SiteUtils.formatCurrency(r.stated_amount)}</td>`);
-        cells.push(`<td>${SiteUtils.formatCurrency(r.additional_amount)}</td>`);
-        cells.push(`<td>${SiteUtils.formatCurrency(r.total_amount)}</td>`);
-        if (hasVendor) cells.push(`<td>${r.vendor || "-"}</td>`);
-        cells.push(`<td>${r.notes || "-"}</td>`);
-        cells.push(`<td>${safe ? `<a href="${safe}" target="_blank" rel="noopener">View source</a>` : "-"}</td>`);
-        cells.push(`<td><details id="${detailId}"><summary>Details</summary><div class="small">${r.notes || "No additional details."}</div></details></td>`);
-
+      visible.forEach((r) => {
         const tr = document.createElement("tr");
-        tr.innerHTML = cells.join("");
+        tr.innerHTML = `
+          <td>${r.project_name || "-"}</td>
+          <td>${r.year || r.period || "-"}</td>
+          <td>${SiteUtils.formatCurrency(r.initial_contract)}</td>
+          <td>${SiteUtils.formatCurrency(r.additional_costs)}</td>
+          <td>${SiteUtils.formatCurrency(r.total_project_cost)}</td>
+          <td>${r.notes || "-"}</td>
+          <td>${r.source_reference || "-"}</td>
+        `;
         bodyEl.appendChild(tr);
       });
 
       statusEl.textContent = `Loaded ${rows.length} row(s); showing ${visible.length}.`;
     }
 
+    let allRows = [];
+
     function rerender() {
-      renderTable();
+      renderTable(allRows);
     }
 
     searchEl.addEventListener("input", rerender);
     sortEl.addEventListener("change", rerender);
 
     SiteUtils.loadCSV("../data/projects.csv")
-      .then((loaded) => {
-        rows = loaded;
-        hasDate = rows.some((r) => Object.prototype.hasOwnProperty.call(r, "date"));
-        hasVendor = rows.some((r) => Object.prototype.hasOwnProperty.call(r, "vendor"));
-        renderGarageSpotlight();
-        renderTable();
+      .then((rows) => {
+        allRows = rows;
+        renderGarageSummary(rows);
+        renderTable(rows);
       })
       .catch((err) => {
-        headEl.innerHTML = "<tr><th>Status</th></tr>";
-        bodyEl.innerHTML = `<tr><td class="small">Unable to load projects data: ${err.message}</td></tr>`;
+        garageBody.innerHTML = `<tr><td colspan="2" class="small">Unable to load project data: ${err.message}</td></tr>`;
+        bodyEl.innerHTML = `<tr><td colspan="7" class="small">Unable to load project data: ${err.message}</td></tr>`;
         statusEl.textContent = "Could not load projects CSV.";
       });
   </script>
