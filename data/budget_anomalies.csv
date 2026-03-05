@@ -1,6 +1,4 @@
-category,prior,current,change,notes,source_url
-Landscaping,42000,49750,+7750,"Higher irrigation and contractor rates",https://example.org/docs/landscaping-invoice.pdf
-Insurance,88500,102900,+14400,"Premium adjustment after policy renewal",https://example.org/docs/insurance-renewal.pdf
-Legal,23500,31800,+8300,"Additional document review and filing",https://example.org/docs/legal-summary.pdf
-Repairs and Maintenance,76000,69800,-6200,"Fewer emergency service calls",https://example.org/docs/maintenance-report.pdf
-Utilities,119000,126400,+7400,"Seasonal usage increase and rate changes",https://example.org/docs/utilities-breakdown.pdf
+category,prior,current,change,notes,source_url,period,change_pct,severity,updated_at
+Insurance,88500,102900,14400,"Premium adjustment after policy renewal",https://example.org/docs/insurance-renewal.pdf,2025,16.3,High Impact,2026-03-01
+Legal,23500,31800,8300,"Additional document review and filing",https://example.org/docs/legal-summary.pdf,2025,35.3,High,2026-02-20
+Repairs and Maintenance,76000,69800,-6200,"Fewer emergency service calls",https://example.org/docs/maintenance-report.pdf,2025,-8.2,Moderate,2026-02-12

@@ -45,9 +45,9 @@
         </p>
 
         <div class="cta-row">
-          <a class="btn primary" href="pages/financial.html">View Financial Analysis</a>
-          <a class="btn" href="pages/projects.html">Review Project Costs</a>
-          <a class="btn" href="pages/documents.html">Documents &amp; Records</a>
+          <a class="btn primary" href="pages/financial.html">Financial Analysis</a>
+          <a class="btn" href="pages/projects.html">Project Reviews</a>
+          <a class="btn" href="pages/documents.html">Documents</a>
         </div>
 
         <div style="margin-top:14px" class="callout">
@@ -59,7 +59,6 @@
       <div class="stack">
         <div class="card profile-card">
           <img class="profile-photo" src="assets/img/profile/hoa-candidate.png" alt="HOA candidate at a community event" />
-          <div class="profile-caption">Community-focused leadership image included for resident identification while site content remains analysis-driven.</div>
         </div>
         <div class="card qrbox">
           <div>
@@ -73,6 +72,16 @@
       </div>
     </div>
   </div>
+
+  <section>
+    <div class="section-title">
+      <h2>Latest Updates</h2>
+      <div class="hint">Top documented changes by absolute value</div>
+    </div>
+    <div id="latest-updates" class="latest-updates">
+      <div class="latest-item">Loading updates...</div>
+    </div>
+  </section>
 
   <section>
     <div class="section-title">
@@ -114,35 +123,6 @@
       </div>
     </div>
   </section>
-
-  <section>
-    <div class="section-title">
-      <h2>Key Topics Residents Are Asking About</h2>
-      <div class="hint">Facts-first and document-backed</div>
-    </div>
-    <div class="card">
-      <ul>
-        <li>Budget trends and assessment increases</li>
-        <li>Major project costs and repairs</li>
-        <li>Legal and administrative expenses</li>
-        <li>Access to documents and records</li>
-      </ul>
-    </div>
-  </section>
-
-  <section>
-    <div class="section-title">
-      <h2>How Residents Can Explore This Site</h2>
-      <div class="hint">A simple path through the information</div>
-    </div>
-    <div class="card">
-      <ol>
-        <li>Start with the <a href="pages/financial.html">Financial Analysis</a> page to review trend and category summaries.</li>
-        <li>Use <a href="pages/projects.html">Project Reviews</a> and <a href="pages/legal.html">Legal &amp; Administrative Expenses</a> to compare major cost areas.</li>
-        <li>Open <a href="pages/documents.html">Documents &amp; Records</a> to confirm each summary with supporting materials.</li>
-      </ol>
-    </div>
-  </section>
 </main>
 
 <footer>
@@ -155,8 +135,42 @@
       </div>
     </div>
   </div>
+  <script src="assets/js/site.js"></script>
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    const latestEl = document.getElementById("latest-updates");
+
+    SiteUtils.loadCSV("data/budget_anomalies.csv")
+      .then((rows) => {
+        const top = rows
+          .slice()
+          .filter((r) => SiteUtils.toNumber(r.change) !== null)
+          .sort((a, b) => Math.abs(SiteUtils.toNumber(b.change)) - Math.abs(SiteUtils.toNumber(a.change)))
+          .slice(0, 3);
+
+        if (!top.length) {
+          latestEl.innerHTML = '<div class="latest-item">No update rows available.</div>';
+          return;
+        }
+
+        latestEl.innerHTML = "";
+        top.forEach((r) => {
+          const safe = SiteUtils.safeLink(r.source_url);
+          const item = document.createElement("div");
+          item.className = "latest-item";
+          item.innerHTML = `
+            <h3>${r.category || "Update"}</h3>
+            <p class="small">Change: ${SiteUtils.formatCurrency(r.change)}</p>
+            <p>${r.notes || "No notes provided."}</p>
+            <p>${safe ? `<a href="${safe}" target="_blank" rel="noopener">View source</a>` : "Source unavailable"}</p>
+          `;
+          latestEl.appendChild(item);
+        });
+      })
+      .catch((err) => {
+        latestEl.innerHTML = `<div class="latest-item">Unable to load updates: ${err.message}</div>`;
+      });
   </script>
 </footer>
 </body>

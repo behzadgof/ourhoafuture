@@ -32,44 +32,74 @@
 <main class="wrap">
   <section>
     <div class="section-title">
-      <h2>Financial Analysis</h2>
-      <div class="hint">Charts, categories, and source-linked records</div>
+      <h2>Budget Overview</h2>
+      <div class="hint">Summary metrics as reflected in records</div>
+    </div>
+    <div class="summary-grid">
+      <div class="summary-card">
+        <div class="summary-label">Total anomalies</div>
+        <div class="summary-value" id="summary-count">-</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-label">Top 3 largest changes</div>
+        <div class="summary-meta" id="summary-top3">Loading...</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-label">Last updated</div>
+        <div class="summary-meta" id="summary-updated">Updated: Not provided in data file</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <h2>Budget Anomalies</h2>
+      <div class="hint">Document-backed rows with filtering and sorting</div>
     </div>
 
-    <div class="grid">
-      <div class="card col-6">
-        <h3>Budget Trends (placeholder)</h3>
-        <p class="small">Replace with a line/bar chart showing year-over-year budget and assessment movement.</p>
-        <div class="placeholder">Budget trends chart placeholder</div>
+    <div class="card col-12">
+      <div class="toolbar">
+        <input id="anomaly-search" class="search-input" type="search" placeholder="Search category or notes" />
+        <select id="anomaly-sort" class="sort-select">
+          <option value="change-desc">Change (desc)</option>
+          <option value="change-asc">Change (asc)</option>
+          <option value="category-asc">Category (A-Z)</option>
+        </select>
+        <label class="toggle-row" id="high-impact-wrap" hidden>
+          <input id="high-impact-only" type="checkbox" />
+          Show only High Impact
+        </label>
       </div>
 
-      <div class="card col-6">
-        <h3>Expense Categories (placeholder)</h3>
-        <p class="small">Use this area for category distribution and over/under budget highlights.</p>
-        <div class="placeholder">Expense categories chart placeholder</div>
-      </div>
-
-      <div class="card col-12">
-        <h3>Financial Data Table</h3>
-        <p class="small">Loaded from <code>../data/budget_anomalies.csv</code>.</p>
+      <div class="table-scroll">
         <table>
-          <thead>
-            <tr>
-              <th>Category</th>
-              <th>Prior</th>
-              <th>Current</th>
-              <th>Change</th>
-              <th>Notes</th>
-              <th>Source</th>
-            </tr>
-          </thead>
+          <thead id="anomaly-head"></thead>
           <tbody id="anomaly-body">
-            <tr>
-              <td colspan="6" class="small">Loading data...</td>
-            </tr>
+            <tr><td class="small">Loading data...</td></tr>
           </tbody>
         </table>
-        <div class="data-status" id="data-status"></div>
+      </div>
+      <div class="data-status" id="anomaly-status"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <h2>Charts</h2>
+      <div class="hint">Placeholders for upcoming visual summaries</div>
+    </div>
+    <div class="charts-grid">
+      <div class="card">
+        <h3>Budget by Category (Top Changes)</h3>
+        <div class="placeholder">Chart placeholder</div>
+      </div>
+      <div class="card">
+        <h3>Legal Expenses Trend</h3>
+        <div class="placeholder">Chart placeholder</div>
+      </div>
+      <div class="card">
+        <h3>Project Costs Overview</h3>
+        <div class="placeholder">Chart placeholder</div>
       </div>
     </div>
   </section>
@@ -85,129 +115,150 @@
       </div>
     </div>
   </div>
+  <script src="../assets/js/site.js"></script>
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    function parseCSV(text) {
-      const rows = [];
-      let field = "";
-      let row = [];
-      let inQuotes = false;
-      const input = text.replace(/\r\n/g, "\n");
+    const searchEl = document.getElementById("anomaly-search");
+    const sortEl = document.getElementById("anomaly-sort");
+    const highImpactWrap = document.getElementById("high-impact-wrap");
+    const highImpactOnlyEl = document.getElementById("high-impact-only");
+    const bodyEl = document.getElementById("anomaly-body");
+    const headEl = document.getElementById("anomaly-head");
+    const statusEl = document.getElementById("anomaly-status");
+    const summaryCountEl = document.getElementById("summary-count");
+    const summaryTop3El = document.getElementById("summary-top3");
+    const summaryUpdatedEl = document.getElementById("summary-updated");
 
-      for (let i = 0; i < input.length; i += 1) {
-        const char = input[i];
-        const next = input[i + 1];
+    let rows = [];
+    let hasPeriod = false;
+    let hasChangePct = false;
+    let hasSeverity = false;
 
-        if (char === "\"") {
-          if (inQuotes && next === "\"") {
-            field += "\"";
-            i += 1;
-          } else {
-            inQuotes = !inQuotes;
-          }
-          continue;
-        }
+    function buildHeader() {
+      const cols = ["Category"];
+      if (hasPeriod) cols.push("Period");
+      cols.push("Prior", "Current", "Change");
+      if (hasChangePct) cols.push("Change %");
+      cols.push("Notes", "Source");
+      headEl.innerHTML = `<tr>${cols.map((c) => `<th>${c}</th>`).join("")}</tr>`;
+    }
 
-        if (char === "," && !inQuotes) {
-          row.push(field.trim());
-          field = "";
-          continue;
-        }
+    function renderSummary() {
+      summaryCountEl.textContent = String(rows.length);
 
-        if (char === "\n" && !inQuotes) {
-          row.push(field.trim());
-          field = "";
-          if (row.some((value) => value !== "")) {
-            rows.push(row);
-          }
-          row = [];
-          continue;
-        }
+      const top = rows
+        .slice()
+        .filter((r) => SiteUtils.toNumber(r.change) !== null)
+        .sort((a, b) => Math.abs(SiteUtils.toNumber(b.change)) - Math.abs(SiteUtils.toNumber(a.change)))
+        .slice(0, 3);
 
-        field += char;
+      if (!top.length) {
+        summaryTop3El.textContent = "No numeric change values available.";
+      } else {
+        summaryTop3El.innerHTML = top.map((r) => {
+          const amt = SiteUtils.formatCurrency(SiteUtils.toNumber(r.change));
+          return `${r.category || "-"}: ${amt}`;
+        }).join("<br />");
       }
 
-      if (field.length > 0 || row.length > 0) {
-        row.push(field.trim());
-        if (row.some((value) => value !== "")) {
-          rows.push(row);
-        }
+      const updates = rows.map((r) => (r.updated_at || "").trim()).filter(Boolean);
+      if (updates.length) {
+        const latest = updates.sort().slice(-1)[0];
+        summaryUpdatedEl.textContent = `Updated: ${latest}`;
+      } else {
+        summaryUpdatedEl.textContent = "Updated: Not provided in data file";
+      }
+    }
+
+    function getVisibleRows() {
+      let visible = SiteUtils.filterRows(rows, searchEl.value, ["category", "notes"]);
+
+      if (hasSeverity && highImpactOnlyEl.checked) {
+        visible = visible.filter((r) => (r.severity || "").toLowerCase() === "high impact" || (r.severity || "").toLowerCase() === "high");
       }
 
-      if (rows.length < 2) return [];
-      const headers = rows[0];
-      return rows.slice(1).map((values) => {
-        const record = {};
-        headers.forEach((key, index) => {
-          record[key] = values[index] || "";
-        });
-        return record;
+      visible = SiteUtils.sortRows(visible, sortEl.value, {
+        "change-desc": (a, b) => (SiteUtils.toNumber(b.change) ?? Number.NEGATIVE_INFINITY) - (SiteUtils.toNumber(a.change) ?? Number.NEGATIVE_INFINITY),
+        "change-asc": (a, b) => (SiteUtils.toNumber(a.change) ?? Number.POSITIVE_INFINITY) - (SiteUtils.toNumber(b.change) ?? Number.POSITIVE_INFINITY),
+        "category-asc": (a, b) => String(a.category || "").localeCompare(String(b.category || ""))
       });
+
+      return visible;
     }
 
-    function isSafeHttpUrl(value) {
-      if (!value) return false;
-      try {
-        const parsed = new URL(value);
-        return parsed.protocol === "http:" || parsed.protocol === "https:";
-      } catch (error) {
-        return false;
-      }
-    }
+    function renderTable() {
+      const visible = getVisibleRows();
 
-    function renderRows(rows) {
-      const tbody = document.getElementById("anomaly-body");
-      const status = document.getElementById("data-status");
       if (!rows.length) {
-        tbody.innerHTML = '<tr><td colspan="6" class="small">No rows found in CSV.</td></tr>';
-        status.textContent = "Loaded file, but there were no anomaly rows.";
+        bodyEl.innerHTML = '<tr><td class="small">No rows found.</td></tr>';
+        statusEl.textContent = "Loaded file, but no anomalies were found.";
         return;
       }
 
-      tbody.innerHTML = "";
-      rows.forEach((rowData) => {
-        const tr = document.createElement("tr");
-        const columns = ["category", "prior", "current", "change", "notes"];
+      if (!visible.length) {
+        const colCount = headEl.querySelectorAll("th").length || 1;
+        bodyEl.innerHTML = `<tr><td colspan="${colCount}" class="small">No rows match the current filter.</td></tr>`;
+        statusEl.textContent = `Loaded ${rows.length} row(s); showing 0.`;
+        return;
+      }
 
-        columns.forEach((column) => {
-          const td = document.createElement("td");
-          td.textContent = rowData[column] || "-";
-          tr.appendChild(td);
-        });
+      bodyEl.innerHTML = "";
+      visible.forEach((r) => {
+        const cells = [];
+        cells.push(`<td>${r.category || "-"}</td>`);
+        if (hasPeriod) cells.push(`<td>${r.period || "-"}</td>`);
 
-        const sourceCell = document.createElement("td");
-        if (isSafeHttpUrl(rowData.source_url)) {
-          const link = document.createElement("a");
-          link.href = rowData.source_url;
-          link.target = "_blank";
-          link.rel = "noopener";
-          link.textContent = "Source";
-          sourceCell.appendChild(link);
-        } else {
-          sourceCell.textContent = "-";
+        const priorN = SiteUtils.toNumber(r.prior);
+        const currentN = SiteUtils.toNumber(r.current);
+        const changeN = SiteUtils.toNumber(r.change);
+        const changePctN = SiteUtils.toNumber(r.change_pct);
+
+        cells.push(`<td>${priorN === null ? (r.prior || "-") : SiteUtils.formatCurrency(priorN)}</td>`);
+        cells.push(`<td>${currentN === null ? (r.current || "-") : SiteUtils.formatCurrency(currentN)}</td>`);
+        cells.push(`<td>${changeN === null ? (r.change || "-") : SiteUtils.formatCurrency(changeN)}</td>`);
+
+        if (hasChangePct) {
+          cells.push(`<td>${changePctN === null ? (r.change_pct || "-") : SiteUtils.formatPercent(changePctN)}</td>`);
         }
 
-        tr.appendChild(sourceCell);
-        tbody.appendChild(tr);
+        cells.push(`<td>${r.notes || "-"}</td>`);
+
+        const safe = SiteUtils.safeLink(r.source_url);
+        cells.push(`<td>${safe ? `<a href="${safe}" target="_blank" rel="noopener">View source</a>` : "-"}</td>`);
+
+        const tr = document.createElement("tr");
+        tr.innerHTML = cells.join("");
+        bodyEl.appendChild(tr);
       });
 
-      status.textContent = `Loaded ${rows.length} row(s) from ../data/budget_anomalies.csv.`;
+      statusEl.textContent = `Loaded ${rows.length} row(s); showing ${visible.length}.`;
     }
 
-    fetch("../data/budget_anomalies.csv")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Request failed: ${response.status}`);
-        }
-        return response.text();
+    function rerender() {
+      renderTable();
+    }
+
+    searchEl.addEventListener("input", rerender);
+    sortEl.addEventListener("change", rerender);
+    highImpactOnlyEl.addEventListener("change", rerender);
+
+    SiteUtils.loadCSV("../data/budget_anomalies.csv")
+      .then((loaded) => {
+        rows = loaded;
+        hasPeriod = rows.some((r) => Object.prototype.hasOwnProperty.call(r, "period"));
+        hasChangePct = rows.some((r) => Object.prototype.hasOwnProperty.call(r, "change_pct"));
+        hasSeverity = rows.some((r) => Object.prototype.hasOwnProperty.call(r, "severity"));
+
+        highImpactWrap.hidden = !hasSeverity;
+        buildHeader();
+        renderSummary();
+        renderTable();
       })
-      .then((csvText) => renderRows(parseCSV(csvText)))
-      .catch((error) => {
-        const tbody = document.getElementById("anomaly-body");
-        const status = document.getElementById("data-status");
-        tbody.innerHTML = '<tr><td colspan="6" class="small">Unable to load data file.</td></tr>';
-        status.textContent = `Could not load CSV: ${error.message}`;
+      .catch((err) => {
+        headEl.innerHTML = "<tr><th>Status</th></tr>";
+        bodyEl.innerHTML = `<tr><td class="small">Unable to load CSV: ${err.message}</td></tr>`;
+        statusEl.textContent = "Could not load anomaly data file.";
       });
   </script>
 </footer>

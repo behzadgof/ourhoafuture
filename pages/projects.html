@@ -30,66 +30,38 @@
 </header>
 
 <main class="wrap">
+  <section id="garage-spotlight" hidden>
+    <div class="section-title">
+      <h2>Garage Repair Spotlight</h2>
+      <div class="hint">Highlighted documented project</div>
+    </div>
+    <div class="card" id="garage-card"></div>
+  </section>
+
   <section>
     <div class="section-title">
       <h2>Project Reviews</h2>
-      <div class="hint">Cost comparisons with references</div>
+      <div class="hint">Summarized costs as reflected in records</div>
     </div>
 
-    <div class="grid">
-      <div class="card col-6">
-        <h3>Project Cost Comparisons (placeholder)</h3>
-        <p class="small">Replace with a chart comparing approved budget vs actual or committed cost by project.</p>
-        <div class="placeholder">Project cost comparison chart placeholder</div>
+    <div class="card">
+      <div class="toolbar">
+        <input id="project-search" class="search-input" type="search" placeholder="Search project, notes, or vendor" />
+        <select id="project-sort" class="sort-select">
+          <option value="total-desc">Total (desc)</option>
+          <option value="total-asc">Total (asc)</option>
+        </select>
       </div>
 
-      <div class="card col-6">
-        <h3>Change Order Trend (placeholder)</h3>
-        <p class="small">Optional visual for change-order frequency and amount over time.</p>
-        <div class="placeholder">Change-order chart placeholder</div>
-      </div>
-
-      <div class="card col-12">
-        <h3>Project Financial Table</h3>
+      <div class="table-scroll">
         <table>
-          <thead>
-            <tr>
-              <th>Project</th>
-              <th>Approved Budget</th>
-              <th>Actual/Committed</th>
-              <th>Variance</th>
-              <th>Status</th>
-              <th>Source</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Roofing Program</td>
-              <td>$0</td>
-              <td>$0</td>
-              <td>$0</td>
-              <td>Placeholder</td>
-              <td><a href="documents.html">Document link</a></td>
-            </tr>
-            <tr>
-              <td>Elevator Modernization</td>
-              <td>$0</td>
-              <td>$0</td>
-              <td>$0</td>
-              <td>Placeholder</td>
-              <td><a href="documents.html">Document link</a></td>
-            </tr>
-            <tr>
-              <td>Exterior Repairs</td>
-              <td>$0</td>
-              <td>$0</td>
-              <td>$0</td>
-              <td>Placeholder</td>
-              <td><a href="documents.html">Document link</a></td>
-            </tr>
+          <thead id="projects-head"></thead>
+          <tbody id="projects-body">
+            <tr><td class="small">Loading data...</td></tr>
           </tbody>
         </table>
       </div>
+      <div class="data-status" id="projects-status"></div>
     </div>
   </section>
 </main>
@@ -104,8 +76,112 @@
       </div>
     </div>
   </div>
+  <script src="../assets/js/site.js"></script>
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    const searchEl = document.getElementById("project-search");
+    const sortEl = document.getElementById("project-sort");
+    const headEl = document.getElementById("projects-head");
+    const bodyEl = document.getElementById("projects-body");
+    const statusEl = document.getElementById("projects-status");
+    const garageSection = document.getElementById("garage-spotlight");
+    const garageCard = document.getElementById("garage-card");
+
+    let rows = [];
+    let hasDate = false;
+    let hasVendor = false;
+
+    function headerHtml() {
+      const cols = ["Project"];
+      if (hasDate) cols.push("Date");
+      cols.push("Stated Amount", "Additional Amount", "Total Amount");
+      if (hasVendor) cols.push("Vendor");
+      cols.push("Notes", "Source", "Details");
+      return `<tr>${cols.map((c) => `<th>${c}</th>`).join("")}</tr>`;
+    }
+
+    function visibleRows() {
+      let visible = SiteUtils.filterRows(rows, searchEl.value, ["project_name", "notes", "vendor"]);
+      visible = SiteUtils.sortRows(visible, sortEl.value, {
+        "total-desc": (a, b) => (SiteUtils.toNumber(b.total_amount) ?? Number.NEGATIVE_INFINITY) - (SiteUtils.toNumber(a.total_amount) ?? Number.NEGATIVE_INFINITY),
+        "total-asc": (a, b) => (SiteUtils.toNumber(a.total_amount) ?? Number.POSITIVE_INFINITY) - (SiteUtils.toNumber(b.total_amount) ?? Number.POSITIVE_INFINITY)
+      });
+      return visible;
+    }
+
+    function renderGarageSpotlight() {
+      const garageRows = rows.filter((r) => (r.project_name || "").toLowerCase().includes("garage"));
+      if (!garageRows.length) {
+        garageSection.hidden = true;
+        return;
+      }
+      garageSection.hidden = false;
+      garageRows.sort((a, b) => (SiteUtils.toNumber(b.total_amount) ?? 0) - (SiteUtils.toNumber(a.total_amount) ?? 0));
+      const top = garageRows[0];
+      const source = SiteUtils.safeLink(top.source_url);
+      garageCard.innerHTML = `
+        <h3>${top.project_name || "Garage Repair"}</h3>
+        <p class="small">Total Amount: ${SiteUtils.formatCurrency(top.total_amount)}</p>
+        <p class="small">${top.notes || "No additional notes provided."}</p>
+        ${source ? `<p><a href="${source}" target="_blank" rel="noopener">View source</a></p>` : ""}
+      `;
+    }
+
+    function renderTable() {
+      const visible = visibleRows();
+      headEl.innerHTML = headerHtml();
+
+      if (!visible.length) {
+        bodyEl.innerHTML = `<tr><td colspan="${headEl.querySelectorAll("th").length}" class="small">No rows match the current search/filter.</td></tr>`;
+        statusEl.textContent = `Loaded ${rows.length} row(s); showing 0.`;
+        return;
+      }
+
+      bodyEl.innerHTML = "";
+      visible.forEach((r, idx) => {
+        const safe = SiteUtils.safeLink(r.source_url);
+        const detailId = `project-detail-${idx}`;
+        const cells = [];
+
+        cells.push(`<td>${r.project_name || "-"}</td>`);
+        if (hasDate) cells.push(`<td>${r.date || "-"}</td>`);
+        cells.push(`<td>${SiteUtils.formatCurrency(r.stated_amount)}</td>`);
+        cells.push(`<td>${SiteUtils.formatCurrency(r.additional_amount)}</td>`);
+        cells.push(`<td>${SiteUtils.formatCurrency(r.total_amount)}</td>`);
+        if (hasVendor) cells.push(`<td>${r.vendor || "-"}</td>`);
+        cells.push(`<td>${r.notes || "-"}</td>`);
+        cells.push(`<td>${safe ? `<a href="${safe}" target="_blank" rel="noopener">View source</a>` : "-"}</td>`);
+        cells.push(`<td><details id="${detailId}"><summary>Details</summary><div class="small">${r.notes || "No additional details."}</div></details></td>`);
+
+        const tr = document.createElement("tr");
+        tr.innerHTML = cells.join("");
+        bodyEl.appendChild(tr);
+      });
+
+      statusEl.textContent = `Loaded ${rows.length} row(s); showing ${visible.length}.`;
+    }
+
+    function rerender() {
+      renderTable();
+    }
+
+    searchEl.addEventListener("input", rerender);
+    sortEl.addEventListener("change", rerender);
+
+    SiteUtils.loadCSV("../data/projects.csv")
+      .then((loaded) => {
+        rows = loaded;
+        hasDate = rows.some((r) => Object.prototype.hasOwnProperty.call(r, "date"));
+        hasVendor = rows.some((r) => Object.prototype.hasOwnProperty.call(r, "vendor"));
+        renderGarageSpotlight();
+        renderTable();
+      })
+      .catch((err) => {
+        headEl.innerHTML = "<tr><th>Status</th></tr>";
+        bodyEl.innerHTML = `<tr><td class="small">Unable to load projects data: ${err.message}</td></tr>`;
+        statusEl.textContent = "Could not load projects CSV.";
+      });
   </script>
 </footer>
 </body>

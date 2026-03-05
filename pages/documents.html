@@ -33,63 +33,28 @@
   <section>
     <div class="section-title">
       <h2>Documents &amp; Records</h2>
-      <div class="hint">Organized links to supporting materials</div>
+      <div class="hint">Searchable library of supporting records</div>
     </div>
 
-    <div class="grid">
-      <div class="card col-6">
-        <h3>Records by Category</h3>
-        <ul>
-          <li><strong>Budgets:</strong> Adopted budgets, reserve summaries, amendment notices.</li>
-          <li><strong>Projects:</strong> Contracts, change orders, invoices, completion reports.</li>
-          <li><strong>Legal/Admin:</strong> Counsel invoices, administrative notices, compliance records.</li>
-          <li><strong>Minutes/Notices:</strong> Board meeting minutes, annual notices, community updates.</li>
-        </ul>
+    <div class="card">
+      <p class="small">Documents may be redacted to remove personal info.</p>
+
+      <div class="chip-group" id="doc-chips">
+        <button class="chip active" data-category="all" type="button">All</button>
+        <button class="chip" data-category="budget" type="button">Budget</button>
+        <button class="chip" data-category="contract" type="button">Contracts</button>
+        <button class="chip" data-category="invoice" type="button">Invoices</button>
+        <button class="chip" data-category="meeting minutes" type="button">Minutes</button>
+        <button class="chip" data-category="notice" type="button">Notices</button>
+        <button class="chip" data-category="other" type="button">Other</button>
       </div>
 
-      <div class="card col-6">
-        <h3>Records Access Notes</h3>
-        <p class="small">Use this page as the source index for all analysis pages. Each summary should trace back to at least one document listed below.</p>
-        <p class="small">For missing items, contact <a href="mailto:ourhoafuture@gmail.com">ourhoafuture@gmail.com</a> with the record name and date range.</p>
+      <div class="toolbar">
+        <input id="doc-search" class="search-input" type="search" placeholder="Search title or description" />
       </div>
 
-      <div class="card col-12">
-        <h3>Document Index Table</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Document Name</th>
-              <th>Date</th>
-              <th>Category</th>
-              <th>Reference Page</th>
-              <th>Link Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Budget Package 2025</td>
-              <td>YYYY-MM-DD</td>
-              <td>Budgets</td>
-              <td><a href="financial.html">Financial Analysis</a></td>
-              <td>Pending link</td>
-            </tr>
-            <tr>
-              <td>Roofing Contract</td>
-              <td>YYYY-MM-DD</td>
-              <td>Projects</td>
-              <td><a href="projects.html">Project Reviews</a></td>
-              <td>Pending link</td>
-            </tr>
-            <tr>
-              <td>Legal Invoice Summary</td>
-              <td>YYYY-MM-DD</td>
-              <td>Legal/Admin</td>
-              <td><a href="legal.html">Legal &amp; Administrative Expenses</a></td>
-              <td>Pending link</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <div id="doc-list" class="grid"></div>
+      <div class="data-status" id="doc-status"></div>
     </div>
   </section>
 </main>
@@ -104,8 +69,82 @@
       </div>
     </div>
   </div>
+  <script src="../assets/js/site.js"></script>
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    const chipsEl = document.getElementById("doc-chips");
+    const searchEl = document.getElementById("doc-search");
+    const listEl = document.getElementById("doc-list");
+    const statusEl = document.getElementById("doc-status");
+
+    let rows = [];
+    let activeCategory = "all";
+
+    function normalizeCategory(value) {
+      const c = String(value || "").toLowerCase().trim();
+      if (c.startsWith("contract")) return "contract";
+      if (c.startsWith("invoice")) return "invoice";
+      if (c.startsWith("meeting minute") || c === "minutes") return "meeting minutes";
+      if (c.startsWith("notice")) return "notice";
+      if (c.startsWith("budget")) return "budget";
+      if (c.startsWith("other")) return "other";
+      return c;
+    }
+
+    function visibleRows() {
+      let visible = SiteUtils.filterRows(rows, searchEl.value, ["title", "description", "category"]);
+      if (activeCategory !== "all") {
+        visible = visible.filter((r) => normalizeCategory(r.category) === activeCategory);
+      }
+      return visible;
+    }
+
+    function renderDocs() {
+      const visible = visibleRows();
+      if (!visible.length) {
+        listEl.innerHTML = '<div class="tile col-12"><p>No documents match the current filters.</p></div>';
+        statusEl.textContent = `Loaded ${rows.length} item(s); showing 0.`;
+        return;
+      }
+
+      listEl.innerHTML = "";
+      visible.forEach((r) => {
+        const safe = SiteUtils.safeLink(r.url);
+        const item = document.createElement("div");
+        item.className = "tile col-6";
+        item.innerHTML = `
+          <h3>${r.title || "Untitled document"}</h3>
+          <p class="small">Category: ${r.category || "Other"}${r.date ? ` | Date: ${r.date}` : ""}</p>
+          <p>${r.description || "No description provided."}</p>
+          <p>${safe ? `<a href="${safe}" target="_blank" rel="noopener">Open</a>` : "Link unavailable"}</p>
+        `;
+        listEl.appendChild(item);
+      });
+
+      statusEl.textContent = `Loaded ${rows.length} item(s); showing ${visible.length}.`;
+    }
+
+    chipsEl.addEventListener("click", (event) => {
+      const btn = event.target.closest(".chip");
+      if (!btn) return;
+      activeCategory = btn.dataset.category;
+      chipsEl.querySelectorAll(".chip").forEach((chip) => chip.classList.remove("active"));
+      btn.classList.add("active");
+      renderDocs();
+    });
+
+    searchEl.addEventListener("input", renderDocs);
+
+    SiteUtils.loadCSV("../data/documents.csv")
+      .then((loaded) => {
+        rows = loaded;
+        renderDocs();
+      })
+      .catch((err) => {
+        listEl.innerHTML = `<div class="tile col-12"><p class="small">Unable to load documents CSV: ${err.message}</p></div>`;
+        statusEl.textContent = "Could not load documents data file.";
+      });
   </script>
 </footer>
 </body>

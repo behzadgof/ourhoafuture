@@ -33,64 +33,33 @@
   <section>
     <div class="section-title">
       <h2>Legal &amp; Administrative Expenses</h2>
-      <div class="hint">Summaries and year-over-year totals</div>
+      <div class="hint">Documented summaries with source links</div>
     </div>
 
-    <div class="grid">
-      <div class="card col-4">
-        <h3>Legal Expenses by Year (placeholder)</h3>
-        <div class="placeholder">Legal chart placeholder</div>
-      </div>
-      <div class="card col-4">
-        <h3>Administrative Expenses (placeholder)</h3>
-        <div class="placeholder">Administrative chart placeholder</div>
-      </div>
-      <div class="card col-4">
-        <h3>Expense Categories (placeholder)</h3>
-        <div class="placeholder">Category chart placeholder</div>
+    <div class="card">
+      <p class="small">This page summarizes documented legal and administrative expenses with links to supporting records.</p>
+      <div class="summary-card" style="margin-bottom:14px;">
+        <div class="summary-label">Visible rows total</div>
+        <div class="summary-value" id="legal-total">$0</div>
       </div>
 
-      <div class="card col-12">
-        <h3>Legal and Administrative Financial Table</h3>
+      <div class="toolbar">
+        <input id="legal-search" class="search-input" type="search" placeholder="Search period, vendor, or notes" />
+        <select id="legal-sort" class="sort-select">
+          <option value="amount-desc">Amount (desc)</option>
+          <option value="amount-asc">Amount (asc)</option>
+        </select>
+      </div>
+
+      <div class="table-scroll">
         <table>
-          <thead>
-            <tr>
-              <th>Expense Category</th>
-              <th>Prior Year</th>
-              <th>Current Year</th>
-              <th>Change</th>
-              <th>Notes</th>
-              <th>Source</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Legal Services</td>
-              <td>$0</td>
-              <td>$0</td>
-              <td>$0</td>
-              <td>Placeholder</td>
-              <td><a href="documents.html">Document link</a></td>
-            </tr>
-            <tr>
-              <td>Collection/Compliance</td>
-              <td>$0</td>
-              <td>$0</td>
-              <td>$0</td>
-              <td>Placeholder</td>
-              <td><a href="documents.html">Document link</a></td>
-            </tr>
-            <tr>
-              <td>Management/Admin</td>
-              <td>$0</td>
-              <td>$0</td>
-              <td>$0</td>
-              <td>Placeholder</td>
-              <td><a href="documents.html">Document link</a></td>
-            </tr>
+          <thead id="legal-head"></thead>
+          <tbody id="legal-body">
+            <tr><td class="small">Loading data...</td></tr>
           </tbody>
         </table>
       </div>
+      <div class="data-status" id="legal-status"></div>
     </div>
   </section>
 </main>
@@ -105,8 +74,93 @@
       </div>
     </div>
   </div>
+  <script src="../assets/js/site.js"></script>
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    const searchEl = document.getElementById("legal-search");
+    const sortEl = document.getElementById("legal-sort");
+    const totalEl = document.getElementById("legal-total");
+    const headEl = document.getElementById("legal-head");
+    const bodyEl = document.getElementById("legal-body");
+    const statusEl = document.getElementById("legal-status");
+
+    let rows = [];
+    let hasVendor = false;
+
+    function renderHeader() {
+      const cols = ["Year / Period", "Amount"];
+      if (hasVendor) cols.push("Vendor / Firm");
+      cols.push("Notes", "Source");
+      headEl.innerHTML = `<tr>${cols.map((c) => `<th>${c}</th>`).join("")}</tr>`;
+    }
+
+    function visibleRows() {
+      let visible = SiteUtils.filterRows(rows, searchEl.value, ["period", "year_or_period", "vendor_or_firm", "notes"]);
+      visible = SiteUtils.sortRows(visible, sortEl.value, {
+        "amount-desc": (a, b) => (SiteUtils.toNumber(b.amount) ?? Number.NEGATIVE_INFINITY) - (SiteUtils.toNumber(a.amount) ?? Number.NEGATIVE_INFINITY),
+        "amount-asc": (a, b) => (SiteUtils.toNumber(a.amount) ?? Number.POSITIVE_INFINITY) - (SiteUtils.toNumber(b.amount) ?? Number.POSITIVE_INFINITY)
+      });
+      return visible;
+    }
+
+    function renderTable() {
+      const visible = visibleRows();
+      if (!visible.length) {
+        bodyEl.innerHTML = `<tr><td colspan="${headEl.querySelectorAll("th").length}" class="small">No rows match the current search/filter.</td></tr>`;
+        totalEl.textContent = "$0";
+        statusEl.textContent = `Loaded ${rows.length} row(s); showing 0.`;
+        return;
+      }
+
+      bodyEl.innerHTML = "";
+      let total = 0;
+      visible.forEach((r) => {
+        const amountNum = SiteUtils.toNumber(r.amount);
+        if (amountNum !== null) total += amountNum;
+        const safe = SiteUtils.safeLink(r.source_url);
+        const period = r.period || r.year_or_period || "-";
+
+        const cells = [
+          `<td>${period}</td>`,
+          `<td>${SiteUtils.formatCurrency(r.amount)}</td>`
+        ];
+
+        if (hasVendor) {
+          cells.push(`<td>${r.vendor_or_firm || "-"}</td>`);
+        }
+
+        cells.push(`<td>${r.notes || "-"}</td>`);
+        cells.push(`<td>${safe ? `<a href="${safe}" target="_blank" rel="noopener">View source</a>` : "-"}</td>`);
+
+        const tr = document.createElement("tr");
+        tr.innerHTML = cells.join("");
+        bodyEl.appendChild(tr);
+      });
+
+      totalEl.textContent = SiteUtils.formatCurrency(total);
+      statusEl.textContent = `Loaded ${rows.length} row(s); showing ${visible.length}.`;
+    }
+
+    function rerender() {
+      renderTable();
+    }
+
+    searchEl.addEventListener("input", rerender);
+    sortEl.addEventListener("change", rerender);
+
+    SiteUtils.loadCSV("../data/legal_expenses.csv")
+      .then((loaded) => {
+        rows = loaded;
+        hasVendor = rows.some((r) => Object.prototype.hasOwnProperty.call(r, "vendor_or_firm"));
+        renderHeader();
+        renderTable();
+      })
+      .catch((err) => {
+        headEl.innerHTML = "<tr><th>Status</th></tr>";
+        bodyEl.innerHTML = `<tr><td class="small">Unable to load legal expenses data: ${err.message}</td></tr>`;
+        statusEl.textContent = "Could not load legal CSV.";
+      });
   </script>
 </footer>
 </body>

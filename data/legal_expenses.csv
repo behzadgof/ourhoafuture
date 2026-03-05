@@ -1,0 +1,4 @@
+period,amount,notes,source_url,vendor_or_firm,category
+2024,42100,"General counsel review and contract support",https://example.org/docs/legal-2024.pdf,Anderson Law Group,Legal
+2025 Q1,18900,"Collections and compliance activity",https://example.org/docs/legal-q1-2025.pdf,Turnberry Counsel,Administrative
+2025 Q2,22400,"Policy updates and documentation review",https://example.org/docs/legal-q2-2025.pdf,Anderson Law Group,Legal
