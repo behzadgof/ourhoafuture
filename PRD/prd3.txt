@@ -1,0 +1,191 @@
+Product Requirements Document (PRD)
+OurHOAFuture.com — Garage Parking Project Cost Breakdown
+Project
+
+Add a Garage Parking Project cost transparency section to the website that summarizes the 2025 garage repair project costs for residents.
+
+The goal is to present clear, factual, summary-level financial information regarding the garage repair project introduced in 2025, including the originally communicated contract amount and the additional costs that resulted in a total project cost of approximately $95,000.
+
+No raw invoices or confidential documents should be published.
+
+Objectives
+
+Provide residents a clear financial summary of the garage project.
+
+Show how the project cost increased from the initial contract amount (~$35K) to a total project cost (~$95K).
+
+Maintain neutral and factual language.
+
+Only display summary information derived from records available to residents through official association channels.
+
+Repository Context
+
+Current repository structure:
+
+ourhoafuture/
+  index.html
+  assets/
+    css/site.css
+  pages/
+    financial.html
+    projects.html
+    legal.html
+    documents.html
+    about.html
+    espanol.html
+  data/
+    budget_anomalies.csv
+Feature to Implement
+Garage Parking Project Transparency Section
+
+This section should be added to:
+
+pages/projects.html
+
+and summarized on the homepage.
+
+Data Model
+
+Create a new dataset:
+
+data/projects.csv
+CSV Format
+project_name,year,initial_contract,additional_costs,total_project_cost,notes,source_reference
+Initial Data
+Garage Parking Repair,2025,35000,60500,95500,"Initial contract amount communicated ~$35K. Additional labor and safety-related work increased the total project cost to approximately $95K.","HOA portal documents and management communications available to residents"
+UI Requirements
+Projects Page Layout
+
+Add a section at the top of projects.html:
+
+Section Title
+Garage Parking Project — Cost Summary
+Intro Text
+
+Display the following text:
+
+This section summarizes the cost structure of the garage repair project introduced in 2025. The figures below reflect high-level totals derived from association records available to residents.
+
+Cost Breakdown Table
+
+Render a table with the following columns:
+
+Item	Amount
+Initial Contract Amount	$35,000
+Additional Labor / Safety Costs	$60,500
+Total Project Cost	$95,500
+
+The amounts should be formatted as currency.
+
+Additional Notes Section
+
+Display the following bullet points below the table:
+
+• The original contract amount communicated was approximately $35,000.
+• Additional labor and safety-related costs increased the total project cost.
+• The total project cost for the project is approximately $95,000.
+• Supporting records are available to residents through the HOA portal and management.
+
+Visual Component
+
+Add a simple cost comparison visualization under the table.
+
+Visualization Type
+
+A horizontal bar comparison:
+
+Initial Contract      | ██████████ $35K
+Additional Costs      | ███████████████████████ $60.5K
+Total Project Cost    | ███████████████████████████████ $95K
+
+This should be implemented using simple HTML/CSS bars (no external libraries).
+
+Homepage Integration
+
+Update index.html.
+
+Add a Featured Project Summary card in the homepage grid.
+
+Title
+Garage Parking Project
+Summary Text
+The garage repair project introduced in 2025 increased from an initial contract amount of approximately $35K to a total project cost of roughly $95K after additional labor and safety-related work.
+Link
+
+Button:
+
+View Cost Breakdown
+
+Link to:
+
+/pages/projects.html
+Site-Wide Language Requirements
+
+Maintain neutral language.
+
+Do NOT include:
+
+accusations
+
+speculation
+
+statements of wrongdoing
+
+Use phrases like:
+
+“According to association records”
+
+“Based on figures available to residents”
+
+“High-level summary”
+
+Compliance Requirements
+
+Ensure the site:
+
+• Publishes summary information only
+• Does not publish invoices, contracts, emails, or personal data
+• Does not host confidential documents
+
+Add the following disclaimer to the footer if not already present:
+
+Disclaimer: This website provides high-level summaries and analysis for informational purposes. Supporting records referenced are available to residents through official association channels.
+
+Technical Requirements
+
+Codex must:
+
+Create data/projects.csv
+
+Modify pages/projects.html to load and render the dataset.
+
+Format numbers as currency.
+
+Ensure responsive layout.
+
+Maintain compatibility with GitHub Pages static hosting.
+
+Avoid external JS libraries.
+
+Future Expansion
+
+The projects dataset should support additional entries such as:
+
+Roof Repairs
+Elevator Maintenance
+Building Structural Repairs
+Waterproofing Projects
+
+The UI should automatically expand to display multiple projects.
+
+Expected Outcome
+
+Residents visiting the site will clearly see:
+
+Garage Repair Project
+
+Initial contract: ~$35K
+Additional costs: ~$60K
+Total project cost: ~$95K
+
+with clear explanation and neutral presentation.
