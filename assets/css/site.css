@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600;700&display=swap");
+
 :root{
   --navy:#0B1F3B;
   --slate:#2E4A6B;
@@ -14,10 +16,10 @@
 *{box-sizing:border-box}
 body{
   margin:0;
-  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,"Helvetica Neue",Helvetica;
+  font-family:"Open Sans",Lato,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,"Helvetica Neue",Helvetica,sans-serif;
   color:var(--ink);
   background:var(--bg);
-  line-height:1.5;
+  line-height:1.55;
 }
 a{color:var(--slate);text-decoration:none}
 a:hover{text-decoration:underline}
@@ -41,6 +43,7 @@ header{
   display:flex;
   align-items:center;
   gap:10px;
+  font-family:"Montserrat",ui-sans-serif,system-ui,sans-serif;
   font-weight:800;
   letter-spacing:.2px;
   color:var(--navy);
@@ -55,19 +58,36 @@ header{
   color:var(--muted);
   background:var(--panel);
 }
-nav{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;font-size:14px}
-nav a{padding:8px 10px;border-radius:10px}
+.context-ribbon{
+  font-size:13px;
+  color:var(--slate);
+  padding:0 0 12px;
+}
+nav{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  font-family:"Montserrat",ui-sans-serif,system-ui,sans-serif;
+  font-size:13px;
+  font-weight:700;
+}
+nav a{padding:8px 9px;border-radius:10px}
 nav a:hover{background:var(--panel);text-decoration:none}
 nav a.active{background:var(--navy);color:#fff}
 main{padding:42px 0 28px}
 .hero{padding-bottom:20px}
-.hero-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:18px;align-items:stretch}
+.hero-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:18px;align-items:stretch}
+.stack{display:grid;gap:14px}
 .card{
   background:var(--panel);
   border:1px solid var(--border);
   border-radius:var(--radius);
   box-shadow:var(--shadow);
   padding:18px;
+}
+h1,h2,h3,th,.btn{
+  font-family:"Montserrat",ui-sans-serif,system-ui,sans-serif;
 }
 h1{margin:0 0 8px;font-size:34px;line-height:1.12;color:var(--navy);letter-spacing:-.5px}
 h2{margin:0;font-size:22px;color:var(--navy);letter-spacing:-.2px}
@@ -91,7 +111,17 @@ h3{margin:0 0 8px;color:var(--navy);font-size:16px}
 .btn.primary{background:var(--navy);color:#fff;border-color:var(--navy)}
 .btn.primary:hover{opacity:.95;text-decoration:none}
 .btn:hover{background:#fff;text-decoration:none;border-color:#c9d2df}
-.qrbox{display:flex;flex-direction:column;justify-content:space-between;gap:10px;min-height:100%}
+.profile-card{padding:14px}
+.profile-photo{
+  width:100%;
+  border-radius:12px;
+  border:1px solid var(--border);
+  display:block;
+  object-fit:cover;
+  aspect-ratio:4/3;
+}
+.profile-caption{margin-top:10px;font-size:13px;color:var(--muted)}
+.qrbox{display:flex;flex-direction:column;justify-content:space-between;gap:10px}
 .qr{
   width:100%;
   aspect-ratio:1/1;
@@ -146,6 +176,7 @@ tfoot td{font-weight:700}
 .data-status{margin:10px 0 0;color:var(--muted);font-size:13px}
 footer{padding:26px 0 40px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
 .footer-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.footer-links{display:flex;gap:12px;align-items:center}
 @media (max-width:900px){
   .hero-grid{grid-template-columns:1fr}
   .col-4,.col-6,.col-8{grid-column:span 12}
