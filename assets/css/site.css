@@ -1,7 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600;700&display=swap");
 
 :root{
-  --navy:#0B1F3B;
+  --bg:#F6F8FC;
+  --surface:#FFFFFF;
+  --surface-2:#EEF3FB;
+  --text:#0F172A;
+  --muted:#475569;
+  --border:#D7DFEA;
+  --primary:#0B2A5B;
+  --primary-2:#163B7A;
+  --accent:#C9A227;
+  --danger:#B42318;
+  --link:#1D4ED8;
+  --navy:var(--primary);
   --slate:#2E4A6B;
   --teal:#0F766E;
   --cyan:#0EA5E9;
@@ -9,12 +20,8 @@
   --sky:#EAF2FB;
   --soft-blue:#F3F8FF;
   --warm:#FFF9EC;
-  --ink:#1A1A1A;
-  --muted:#5B6675;
-  --bg:#FFFFFF;
-  --panel:#F5F7FA;
-  --border:#D8DEE7;
-  --accent:#C9A227;
+  --ink:var(--text);
+  --panel:var(--surface-2);
   --radius:14px;
   --shadow:0 10px 25px rgba(11,31,59,.08);
   --max:1120px;
@@ -23,14 +30,12 @@
 body{
   margin:0;
   font-family:"Open Sans",Lato,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,"Helvetica Neue",Helvetica,sans-serif;
-  color:var(--ink);
-  background:
-    radial-gradient(1200px 420px at 50% -200px, #dbeaff, transparent 60%),
-    linear-gradient(180deg, #f3f8ff 0%, #ffffff 35%);
+  color:var(--text);
+  background:var(--bg);
   line-height:1.55;
   overflow-x:hidden;
 }
-a{color:#174a79;text-decoration:none}
+a{color:var(--link);text-decoration:none}
 a:hover{color:var(--teal);text-decoration:underline}
 header{
   position:sticky;
@@ -99,7 +104,7 @@ main > section:nth-of-type(even){background:linear-gradient(180deg,#fff7e6,#fffd
 .hero-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:18px;align-items:stretch}
 .stack{display:grid;gap:14px}
 .card{
-  background:#fff;
+  background:var(--surface);
   border:1px solid #c4d4ea;
   border-radius:var(--radius);
   box-shadow:var(--shadow);
@@ -127,7 +132,7 @@ h3{margin:0 0 8px;color:var(--navy);font-size:16px}
   padding:10px 14px;
   border-radius:12px;
   border:1px solid var(--border);
-  background:#fff;
+  background:var(--surface);
   color:var(--navy);
   font-weight:800;
   font-size:14px;
@@ -137,8 +142,13 @@ h3{margin:0 0 8px;color:var(--navy);font-size:16px}
   color:#fff;
   border-color:#163a68;
 }
+.btn-primary{
+  background:linear-gradient(135deg,var(--navy),#174077);
+  color:#fff;
+  border-color:#163a68;
+}
 .btn-secondary{
-  background:#fff;
+  background:var(--surface);
   color:var(--navy);
   border-color:#163a68;
 }
@@ -150,7 +160,18 @@ h3{margin:0 0 8px;color:var(--navy);font-size:16px}
 }
 .btn-accent:hover{opacity:.95;text-decoration:none}
 .btn.primary:hover{opacity:.95;text-decoration:none}
+.btn-primary:hover{opacity:.95;text-decoration:none}
 .btn:hover{background:#f7fbff;text-decoration:none;border-color:#bcd1ea}
+p{max-width:70ch}
+.panel{border-radius:16px}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+summary:focus-visible{
+  outline:3px solid rgba(29,78,216,.35);
+  outline-offset:2px;
+}
 .profile-card{padding:14px}
 .profile-photo{
   width:100%;
@@ -222,7 +243,7 @@ table{
   border-spacing:0;
   border:1px solid var(--border);
   border-radius:12px;
-  background:#fff;
+  background:var(--surface);
   font-size:14px;
   overflow:hidden;
 }
