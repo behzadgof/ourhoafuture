@@ -15,8 +15,16 @@
     .money-value { margin-top: 6px; font-size: 36px; line-height: 1.1; font-weight: 800; color: #0b2545; }
     .money-card.total .money-value { color: #8f1d17; }
     .money-note { margin-top: 6px; font-size: 13px; color: var(--muted); }
+    .pain-bars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; align-items: end; min-height: 280px; }
+    .pain-bar { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .pain-bar-visual { width: 100%; max-width: 120px; border-radius: 10px 10px 4px 4px; background: linear-gradient(180deg, #1f4f8a, #0f2f57); min-height: 32px; border: 1px solid #173d68; }
+    .pain-bar.total .pain-bar-visual { background: linear-gradient(180deg, #b42318, #7f1c12); border-color: #7f1c12; }
+    .pain-bar-label { text-align: center; font-size: 12px; font-weight: 700; color: var(--muted); }
+    .pain-bar-value { font-size: 22px; font-weight: 800; color: #0b2545; }
+    .pain-bar.total .pain-bar-value { color: #8f1d17; }
     @media (max-width: 1100px) { .money-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 700px) { .money-grid { grid-template-columns: 1fr; } .money-value { font-size: 30px; } }
+    @media (max-width: 900px) { .pain-bars { grid-template-columns: repeat(2, 1fr); min-height: 220px; } }
+    @media (max-width: 700px) { .money-grid { grid-template-columns: 1fr; } .money-value { font-size: 30px; } .pain-bars { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body id="top">
@@ -51,6 +59,11 @@
       <p><strong>Based on the records summarized below, the documented cost-to-scope contrast raises serious concerns about project management efficiency.</strong></p>
       <p class="small">All amounts and dates shown on this page are drawn from engineering proposals, contractor agreements, and project documentation available to residents.</p>
     </div>
+    <figure class="card gallery-item" style="margin-top:14px;">
+      <a href="assets/images/garage1.jpg" target="_blank" rel="noopener"><img src="assets/images/garage1.jpg" alt="Temporary structural shoring installed to support the slab during repair work" loading="lazy" /></a>
+      <div class="cost-markup" aria-label="Documented cost">$100,265</div>
+      <figcaption>Temporary structural shoring installed to support the slab during repair work. <a href="assets/images/garage1.jpg" target="_blank" rel="noopener">View full size</a></figcaption>
+    </figure>
   </section>
 
   <section class="panel">
@@ -79,6 +92,35 @@
         </div>
       </div>
       <p><strong>This documented spending level for a localized repair zone raises serious concern about board stewardship and fiscal responsibility.</strong></p>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="section-title"><h2>Price Impact Bars</h2></div>
+    <div class="card">
+      <div class="pain-bars" role="img" aria-label="Vertical bars comparing documented project costs">
+        <div class="pain-bar">
+          <div class="pain-bar-visual" style="height: 48px;"></div>
+          <div class="pain-bar-value">$4,800</div>
+          <div class="pain-bar-label">Engineering</div>
+        </div>
+        <div class="pain-bar">
+          <div class="pain-bar-visual" style="height: 120px;"></div>
+          <div class="pain-bar-value">$34,927</div>
+          <div class="pain-bar-label">Flange Repair</div>
+        </div>
+        <div class="pain-bar">
+          <div class="pain-bar-visual" style="height: 190px;"></div>
+          <div class="pain-bar-value">$60,538</div>
+          <div class="pain-bar-label">Slab Jacking</div>
+        </div>
+        <div class="pain-bar total">
+          <div class="pain-bar-visual" style="height: 260px;"></div>
+          <div class="pain-bar-value">$100,265</div>
+          <div class="pain-bar-label">Total Exposure</div>
+        </div>
+      </div>
+      <p class="small"><strong>The visual gap between these bars shows how quickly costs scaled to six-figure total exposure.</strong></p>
     </div>
   </section>
 
@@ -295,12 +337,6 @@
 
   <section class="panel">
     <div class="section-title"><h2>Project Work Area Documentation</h2></div>
-
-    <figure class="card gallery-item" style="margin-bottom:14px;">
-      <a href="assets/images/garage1.jpg" target="_blank" rel="noopener"><img src="assets/images/garage1.jpg" alt="Temporary structural shoring installed to support the slab during repair work" loading="lazy" /></a>
-      <div class="cost-markup" aria-label="Documented cost">$100,265</div>
-      <figcaption>Temporary structural shoring installed to support the slab during repair work. <a href="assets/images/garage1.jpg" target="_blank" rel="noopener">View full size</a></figcaption>
-    </figure>
 
     <div class="card" style="margin-bottom:14px;">
       <h3>Temporary Structural Shoring</h3>
