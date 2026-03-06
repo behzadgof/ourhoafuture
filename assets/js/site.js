@@ -122,6 +122,36 @@
     }).then(parseCSV);
   }
 
+  function setupMobileNav() {
+    var header = document.querySelector("header");
+    var topbar = document.querySelector(".topbar");
+    var nav = document.querySelector("header nav");
+    if (!header || !topbar || !nav) return;
+
+    if (topbar.querySelector(".mobile-nav-toggle")) return;
+
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "mobile-nav-toggle";
+    btn.setAttribute("aria-expanded", "false");
+    btn.setAttribute("aria-label", "Toggle navigation menu");
+    btn.textContent = "Menu";
+
+    btn.addEventListener("click", function () {
+      var isOpen = header.classList.toggle("nav-open");
+      btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+
+    nav.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", function () {
+        header.classList.remove("nav-open");
+        btn.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    topbar.insertBefore(btn, nav);
+  }
+
   window.SiteUtils = {
     loadCSV: loadCSV,
     parseCSV: parseCSV,
@@ -130,6 +160,13 @@
     safeLink: safeLink,
     toNumber: toNumber,
     filterRows: filterRows,
-    sortRows: sortRows
+    sortRows: sortRows,
+    setupMobileNav: setupMobileNav
   };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupMobileNav);
+  } else {
+    setupMobileNav();
+  }
 }());

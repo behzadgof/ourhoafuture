@@ -1,0 +1,330 @@
+# PRD — Homepage Update
+Project: Our HOA Future Transparency Portal
+
+Repository:
+https://github.com/behzadgof/ourhoafuture
+
+Target File:
+index.html
+
+---
+
+# Objective
+
+Update the homepage so visitors immediately understand:
+
+1. Who Behzad Ghofranian is
+2. Why the website exists
+3. The professional experience related to financial oversight
+4. The key priorities for the community
+5. Where residents can review financial analysis and project breakdowns
+
+The homepage should communicate transparency, financial responsibility, and professional experience.
+
+The tone must remain:
+
+- factual
+- professional
+- neutral
+- easy to read
+
+---
+
+# Page Structure
+
+The homepage should contain the following sections in order:
+
+Hero Section
+About Behzad
+Why This Site Exists
+Community Priorities
+Spanish Summary
+Financial Transparency Call-to-Action
+
+Each section should be visually separated with clear spacing.
+
+Spacing between sections:
+60px minimum
+
+---
+
+# HERO SECTION
+
+Title:
+
+Transparency • Stability • Responsible Financial Stewardship
+
+Subtitle:
+
+Financial analysis, project summaries, and supporting information for Turnberry on the Green residents.
+
+Add call-to-action button:
+
+Review Financial Analysis
+
+Button link:
+
+/garage-project.html
+
+Optional secondary button:
+
+View Budget Analysis
+
+---
+
+# ABOUT BEHZAD SECTION
+
+Section Title:
+
+About Behzad Ghofranian
+
+Content:
+
+Over 20 years of experience in financial oversight, budgeting systems, and operational controls within a nationally recognized financial organization.
+
+I work daily with accountants reviewing budgets, vendor contracts, expenditures, and financial reporting processes to support transparency, compliance, and accountability.
+
+I also taught for 15 years, bringing strong communication, integrity, and responsibility to every leadership role.
+
+Layout requirements:
+
+Two-column layout
+
+Left column:
+Text content
+
+Right column:
+Profile photo placeholder
+
+Image location:
+
+/assets/images/profile.jpg
+
+Image must scale responsively.
+
+---
+
+# WHY THIS SITE EXISTS
+
+Section Title:
+
+Why This Site Exists
+
+Content:
+
+Our community has experienced increased assessments, special insurance assessments, and major projects requiring clearer cost transparency.
+
+This site was created to help residents better understand budgets, project costs, and how association funds are being used through summary analysis and supporting information.
+
+The site provides:
+
+- project cost breakdowns
+- budget analysis
+- contract summaries
+- visual documentation of major projects
+
+---
+
+# COMMUNITY PRIORITIES SECTION
+
+Section Title:
+
+Community Priorities
+
+Display items as cards or icon list.
+
+Items:
+
+Full cost breakdowns before major project approvals
+
+Competitive vendor bidding and contract oversight
+
+Clearer budgets and reserve planning
+
+Timely access to official records as required by law
+
+Independent and balanced board representation
+
+Protection of long-term property values
+
+Layout:
+
+Grid layout
+
+Desktop:
+3 columns
+
+Tablet:
+2 columns
+
+Mobile:
+1 column
+
+Each item should include an icon or simple visual marker.
+
+---
+
+# SPANISH SUMMARY SECTION
+
+Section Title:
+
+Resumen en Español
+
+Content:
+
+Más de 20 años de experiencia en supervisión financiera, control presupuestario y procesos administrativos en una organización financiera reconocida.
+
+Trabajo diariamente con contadores revisando presupuestos, contratos con proveedores y reportes financieros para promover transparencia, cumplimiento y responsabilidad.
+
+También fui profesor durante 15 años, aportando comunicación clara e integridad a cada rol de liderazgo.
+
+Subsection Title:
+
+Prioridades
+
+Items:
+
+Desglose claro de costos antes de aprobar proyectos
+
+Evaluación competitiva de proveedores
+
+Mejor planificación presupuestaria y de reservas
+
+Acceso oportuno a registros oficiales según la ley
+
+Representación equilibrada e independiente
+
+Protección del valor de las propiedades
+
+---
+
+# FINANCIAL TRANSPARENCY CALL TO ACTION
+
+Section Title:
+
+Review the Analysis
+
+Content:
+
+Full platform, documentation, and financial analysis available at:
+
+www.OurHOAFuture.com
+
+Visit the site to review:
+
+- detailed project breakdowns
+- budget analysis
+- financial summaries
+- supporting documentation
+
+Spanish text:
+
+Plataforma completa, documentación y análisis financiero disponibles en:
+
+www.OurHOAFuture.com
+
+Visite el sitio para revisar el desglose detallado de proyectos y el análisis presupuestario.
+
+Add buttons linking to:
+
+Garage Project
+Budget Analysis
+Documents
+
+---
+
+# NAVIGATION UPDATE
+
+Ensure the navigation menu includes:
+
+Home
+Garage Project
+Budget Analysis
+Documents
+Photos
+FAQ
+
+Menu must collapse to hamburger navigation on mobile.
+
+---
+
+# DESIGN REQUIREMENTS
+
+Typography:
+
+Headers:
+Montserrat or Inter
+
+Body:
+Open Sans
+
+Color palette:
+
+Primary:
+#1f3a5f
+
+Accent:
+#d4a017
+
+Background:
+#f5f7fa
+
+Text:
+#2e2e2e
+
+---
+
+# MOBILE RESPONSIVENESS
+
+Ensure:
+
+- text readable on mobile
+- columns stack vertically
+- buttons expand to full width
+- images resize automatically
+
+Mobile-first design preferred.
+
+---
+
+# SEO METADATA
+
+Add metadata to the page:
+
+title:
+Our HOA Future | Transparency and Financial Analysis
+
+description:
+Financial analysis, project documentation, and transparency information for Turnberry on the Green residents.
+
+---
+
+# DELIVERABLES FOR CODEX
+
+Codex must:
+
+1. Update index.html
+2. Add About section
+3. Add Why This Site Exists section
+4. Add Community Priorities section
+5. Add Spanish summary section
+6. Add call-to-action section
+7. Ensure mobile responsiveness
+8. Maintain existing site styling
+
+---
+
+# SUCCESS CRITERIA
+
+Visitors landing on the homepage must immediately understand:
+
+Who Behzad is  
+Why the website exists  
+What the priorities are  
+Where to review financial analysis
+
+The homepage should communicate:
+
+professional credibility  
+financial stewardship  
+transparency
