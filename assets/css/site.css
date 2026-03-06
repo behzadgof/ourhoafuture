@@ -137,6 +137,18 @@ h3{margin:0 0 8px;color:var(--navy);font-size:16px}
   color:#fff;
   border-color:#163a68;
 }
+.btn-secondary{
+  background:#fff;
+  color:var(--navy);
+  border-color:#163a68;
+}
+.btn-secondary:hover{background:#eef4ff;text-decoration:none}
+.btn-accent{
+  background:linear-gradient(180deg,#d4ad3c,#bb962b);
+  color:#10233f;
+  border-color:#b28f27;
+}
+.btn-accent:hover{opacity:.95;text-decoration:none}
 .btn.primary:hover{opacity:.95;text-decoration:none}
 .btn:hover{background:#f7fbff;text-decoration:none;border-color:#bcd1ea}
 .profile-card{padding:14px}
@@ -216,6 +228,9 @@ table{
 }
 th,td{padding:10px;border-bottom:1px solid var(--border);vertical-align:top}
 th{text-align:left;color:var(--navy);background:#edf3fb;font-weight:800}
+tbody tr:nth-child(even){background:#f9fbff}
+tbody tr:hover{background:#edf5ff}
+.num{text-align:right;white-space:nowrap}
 tr:last-child td{border-bottom:none}
 tfoot td{font-weight:700}
 .data-status{margin:10px 0 0;color:var(--muted);font-size:13px}
@@ -241,6 +256,7 @@ tfoot td{font-weight:700}
 .summary-value{margin-top:6px;font-weight:800;color:var(--navy);font-size:24px;line-height:1.2}
 .summary-meta{margin-top:6px;font-size:13px;color:var(--muted)}
 .table-scroll{overflow-x:auto}
+.table-wrap{overflow-x:auto}
 .chip-group{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
 .chip{
   border:1px solid var(--border);
@@ -268,12 +284,23 @@ tfoot td{font-weight:700}
 .bar-track{height:14px;background:#e8edf5;border-radius:999px;overflow:hidden}
 .bar-fill{height:100%;background:linear-gradient(90deg,var(--slate),var(--navy));border-radius:999px}
 .bar-value{font-weight:700;color:var(--navy);font-size:13px}
+.garage-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.gallery-item{margin:0}
+.gallery-item img{
+  width:100%;
+  border-radius:10px;
+  display:block;
+  border:1px solid #c7d8ec;
+}
+.gallery-item figcaption{margin-top:8px;font-size:13px;color:var(--muted)}
+#garageCostChart{width:100%;height:320px !important;max-height:320px}
 footer{padding:26px 0 40px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
 .footer-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}
 .footer-links{display:flex;gap:12px;align-items:center}
 @media (max-width:900px){
   .hero-grid{grid-template-columns:1fr}
   .summary-grid,.charts-grid,.latest-updates{grid-template-columns:1fr}
+  .garage-gallery{grid-template-columns:repeat(2,1fr)}
   .col-4,.col-6,.col-8{grid-column:span 12}
   nav{justify-content:flex-start}
   .brand{white-space:normal}
@@ -334,6 +361,8 @@ footer{padding:26px 0 40px;border-top:1px solid var(--border);color:var(--muted)
   th,td{padding:8px}
   .latest-item h3{font-size:15px}
   .bar-row{grid-template-columns:1fr}
+  .garage-gallery{grid-template-columns:1fr}
+  #garageCostChart{height:260px !important;max-height:260px}
   .footer-row{justify-content:flex-start}
   .footer-links{width:100%;justify-content:flex-start}
 }

@@ -1,0 +1,254 @@
+PRODUCT REQUIREMENTS DOCUMENT (PRD)
+
+Project: Garage Repair Contract Transparency Page
+Repository: https://github.com/behzadgof/ourhoafuture
+Website: https://behzadgof.github.io/ourhoafuture/
+
+Purpose:
+Add a dedicated section explaining the 2025 Parking Garage Structural Repair Project, including contract summaries, cost breakdown, and photo documentation.
+
+The page must present factual information derived from contracts available to residents.
+
+1. Page Overview
+
+Create a new page:
+
+garage-project.html
+
+Purpose of the page:
+
+Provide residents with a clear and simple explanation of the garage repair project, including:
+
+project description
+
+contract summaries
+
+cost breakdown
+
+visual documentation
+
+links to source documents
+
+The page should emphasize transparency and clarity.
+
+2. Page Layout Structure
+
+The page should contain the following sections in order.
+
+Hero / Page Header
+Project Overview
+Contract Summary
+Cost Breakdown Chart
+Project Photos
+Document Sources
+3. Page Header
+
+Title:
+
+Parking Garage Structural Repair Project (2025)
+
+Subtitle:
+
+Summary of repair contracts and project documentation
+
+Optional short description:
+
+This page provides a summary of the parking garage structural repair project based on contracts and documents available to residents.
+4. Project Overview Section
+
+Section title:
+
+Project Overview
+
+Content:
+
+Explain the nature of the repair work.
+
+Example content:
+
+In 2025, structural repair work was performed in the second-floor parking structure.
+
+The work involved repairs to the double-tee concrete structure, including flange repair and slab jacking. Temporary structural shoring was installed to support the slab during the repair process.
+
+The project was executed under two contracts with Age of Empire Construction.
+5. Contract Summary Section
+
+Section title:
+
+Contract Summary
+
+Display a clean table summarizing the two contracts.
+
+Table structure:
+
+Contract	Description	Amount
+Double Tee Flange Repair	Structural flange repair	$34,927
+Double Tee Slab Jacking	Slab leveling and structural support	$60,538
+
+Total:
+
+Total Project Cost: $95,465
+6. Cost Breakdown Visualization
+
+Add a bar chart or comparison chart.
+
+Use:
+
+Chart.js
+
+Chart title:
+
+Garage Repair Project Cost Breakdown
+
+Data:
+
+Flange Repair: 34927
+Slab Jacking: 60538
+
+The chart should visually demonstrate that the project consisted of two separate contracts.
+
+7. Project Photos Section
+
+Section title:
+
+Repair Work Documentation
+
+Purpose:
+
+Show images of the repair work and temporary structural supports.
+
+Images to include:
+
+images are located in : C:\GitHub\ourhoafuture\assets\img\parking-ageofempire\  which is best if you can manage these images and recreate and rename starting with the name garage and remove the metadata of the images .
+
+garage1.jpg
+garage2.jpg
+garage3.jpg
+garage4.jpg
+garage5.jpg
+garage6.jpg
+garage7.jpg
+garage8.jpg
+
+Images should be stored in:
+
+/assets/images/
+
+Gallery layout:
+
+responsive grid
+3 columns desktop
+2 columns tablet
+1 column mobile
+
+Add captions such as:
+
+Temporary structural shoring installed during repair work.
+Work area containment during garage repairs.
+Parking slab areas where repairs were performed.
+8. Project Timeline Section
+
+Add a small timeline.
+
+Example:
+
+Date	Event
+April 4, 2025	Repair proposals issued
+April 28, 2025	Contract executed
+2025	Structural repair work performed
+9. Document Source Section
+
+Section title:
+
+Source Documents
+
+Content:
+
+Explain where the information comes from.
+
+Example text:
+
+The information presented on this page is based on contracts and documents available to residents through the association portal or provided by management upon request.
+
+Optionally add:
+
+View Contract Document
+10. Legal / Transparency Disclaimer
+
+Add a disclaimer at the bottom of the page.
+
+Example:
+
+This page provides a summary of project documentation available to residents. The information is presented for transparency and informational purposes.
+11. Design Requirements
+
+Use the site's existing theme.
+
+Ensure:
+
+clean layout
+readable typography
+mobile responsive
+clear visual hierarchy
+
+Colors should match the site theme.
+
+Recommended section spacing:
+
+60px vertical spacing
+12. Navigation Integration
+
+Add the page to the site navigation.
+
+Menu item:
+
+Garage Project
+
+Link:
+
+/garage-project.html
+13. Performance Requirements
+
+Ensure:
+
+images optimized
+lazy loading enabled
+chart loads quickly
+mobile responsive layout
+14. Deliverables
+
+Codex must create:
+
+garage-project.html
+CSS updates if necessary
+image gallery grid
+chart.js integration
+navigation link
+15. Success Criteria
+
+The page must allow residents to quickly understand:
+
+what the garage repair project was
+
+how much it cost
+
+how the cost was structured
+
+what work was performed
+
+visual documentation of the repairs
+
+The page should be informational, neutral, and transparent.
+
+If you'd like, I can also show you one very powerful addition that will make this page 10x more convincing:
+
+A "Contract vs Work Visualization" section showing:
+
+Contract Amount
+$95,465
+
+Photos of actual work
+Timeline
+Repair scope
+
+That makes the site feel like a professional investigation dashboard, not just a simple HOA site.

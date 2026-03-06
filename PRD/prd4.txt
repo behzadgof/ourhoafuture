@@ -1,0 +1,230 @@
+PRD — OurHOAFuture.com Visual Theme Upgrade
+Objective
+
+Upgrade the website’s visual design from basic black/white into a professional “financial transparency portal” theme that feels modern, trustworthy, and readable on desktop + mobile.
+
+Constraints
+
+No external CSS frameworks (no Bootstrap/Tailwind)
+
+Keep the existing layout and content structure
+
+Changes should primarily be in assets/css/site.css (minimal HTML edits allowed)
+
+GitHub Pages compatible
+
+Theme Direction
+
+Style: “Professional civic / financial report dashboard”
+Tone: Trustworthy, modern, calm
+Look: Light backgrounds, navy headings, subtle shadows, strong buttons, readable tables
+
+Color Palette (Implement as CSS Variables)
+
+Add these CSS variables in :root:
+
+--bg: #F6F8FC (page background)
+
+--surface: #FFFFFF (cards)
+
+--surface-2: #EEF3FB (section panels)
+
+--text: #0F172A (primary text – deep slate)
+
+--muted: #475569 (secondary text)
+
+--border: #D7DFEA (border)
+
+--primary: #0B2A5B (navy)
+
+--primary-2: #163B7A (hover navy)
+
+--accent: #C9A227 (gold accent)
+
+--danger: #B42318 (use only for warnings if needed)
+
+--link: #1D4ED8 (blue links)
+
+Typography
+
+Base font: system UI (keep)
+
+Headings: increase weight + letter-spacing slightly
+
+Line height: 1.5 body, 1.2 headings
+
+Max line width for paragraphs: ~70 characters
+
+Add a typography scale:
+
+H1: 36–40px
+
+H2: 22–26px
+
+Body: 16px
+
+Small: 13–14px
+
+Layout & Sections
+
+Body background should be --bg, not white.
+
+Add section panels so each section is distinct:
+
+alternate background blocks: --surface and --surface-2
+
+Add a consistent container max width (already exists; keep it).
+
+Components to Improve
+Header / Nav
+
+Sticky header stays
+
+Use --primary for brand
+
+Add subtle drop shadow on scroll
+
+Nav links: pill hover background
+
+Buttons
+
+Create 3 button styles:
+
+Primary: navy filled (--primary)
+
+Secondary: outline navy
+
+Accent: gold (sparingly for “View Financial Analysis” or important CTA)
+
+Cards
+
+All cards should have:
+
+white background --surface
+
+border --border
+
+subtle shadow
+
+rounded corners 12–16px
+
+Tables
+
+Tables should look “report-grade”:
+
+header background --surface-2
+
+zebra striping
+
+row hover highlight
+
+numeric columns right-aligned (if possible)
+
+horizontal scroll on mobile
+
+Highlight Callouts
+
+Add .callout class:
+
+left border accent color --accent
+
+soft background --surface-2
+
+Badges / Chips
+
+For category tags (Budget / Projects / Legal):
+
+pill style with --surface-2
+
+Specific Page Enhancements
+Financial page
+
+Add a “Summary cards row” at top: 3 cards (Anomalies count, Top change, Last updated)
+
+Add filter/search input styling (rounded, clear focus state)
+
+Projects page
+
+“Garage Parking Project — Cost Summary” should have a featured card style
+
+Implementation Requirements
+
+Codex should:
+
+Update assets/css/site.css:
+
+Replace black/white styling with the theme variables above
+
+Add component classes:
+
+.btn, .btn-primary, .btn-secondary, .btn-accent
+
+.card, .panel, .callout, .chip
+
+.table-wrap for mobile scroll
+
+Improve link color, hover states, focus outlines for accessibility
+
+Minimal HTML changes across pages:
+
+Ensure buttons use new classes
+
+Wrap tables in <div class="table-wrap">...</div>
+
+Add section wrappers (if needed) to alternate backgrounds
+
+Ensure contrast meets readability:
+
+Body text always dark slate, not pure black
+
+Avoid low-contrast gray-on-white
+
+Verify mobile behavior:
+
+Table horizontal scroll works
+
+Nav wraps nicely
+
+Cards stack
+
+Acceptance Criteria
+
+Site looks like a polished professional dashboard (not plain B/W)
+
+CTAs are clearly visible
+
+Sections are visually separated
+
+Tables are readable and scannable
+
+No layout breakage on mobile
+
+Codex Prompt (Copy/Paste)
+
+Use this exactly in Codex:
+
+Apply a professional theme across the site.
+
+1) Update assets/css/site.css to use a modern “financial transparency portal” theme:
+- Add CSS variables for colors:
+  --bg #F6F8FC, --surface #FFFFFF, --surface-2 #EEF3FB, --text #0F172A, --muted #475569,
+  --border #D7DFEA, --primary #0B2A5B, --primary-2 #163B7A, --accent #C9A227, --link #1D4ED8
+- Set body background to var(--bg), text to var(--text)
+- Improve typography scale for h1/h2/body, add comfortable spacing
+- Create and apply component classes:
+  .card (white surface, border, shadow, radius)
+  .panel (surface-2 section background)
+  .btn .btn-primary .btn-secondary .btn-accent (clear CTA styling)
+  .callout (accent left border + soft background)
+  .chip (pill style)
+  .table-wrap (overflow-x auto) + table zebra striping + hover
+- Improve header/nav styling (sticky, subtle shadow, hover pills)
+- Ensure strong contrast and good readability
+
+2) Make minimal HTML edits in index.html and all pages/*.html:
+- Add button classes to existing links/buttons
+- Wrap all tables in <div class="table-wrap">...</div>
+- Use .card and .panel classes where appropriate to visually separate sections
+Do not change the content meaning; only improve visuals.
+
+3) Keep everything GitHub Pages compatible and avoid external libraries.
