@@ -307,6 +307,7 @@ tfoot td{font-weight:700}
 .bar-value{font-weight:700;color:var(--navy);font-size:13px}
 .garage-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .gallery-item{margin:0}
+.gallery-item{position:relative}
 .gallery-item img{
   width:100%;
   border-radius:10px;
@@ -314,6 +315,19 @@ tfoot td{font-weight:700}
   border:1px solid #c7d8ec;
 }
 .gallery-item figcaption{margin-top:8px;font-size:13px;color:var(--muted)}
+.cost-markup{
+  position:absolute;
+  top:18px;
+  right:18px;
+  background:rgba(180,35,24,.95);
+  color:#fff;
+  font-weight:800;
+  font-size:30px;
+  line-height:1;
+  padding:10px 12px;
+  border-radius:10px;
+  box-shadow:0 8px 20px rgba(0,0,0,.25);
+}
 #garageCostChart{width:100%;height:320px !important;max-height:320px}
 footer{padding:26px 0 40px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
 .footer-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}
@@ -383,6 +397,11 @@ footer{padding:26px 0 40px;border-top:1px solid var(--border);color:var(--muted)
   .latest-item h3{font-size:15px}
   .bar-row{grid-template-columns:1fr}
   .garage-gallery{grid-template-columns:1fr}
+  .cost-markup{
+    font-size:24px;
+    top:14px;
+    right:14px;
+  }
   #garageCostChart{height:260px !important;max-height:260px}
   .footer-row{justify-content:flex-start}
   .footer-links{width:100%;justify-content:flex-start}
