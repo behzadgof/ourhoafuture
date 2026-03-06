@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spending Hub | OurHOAFuture.com</title>
+  <meta name="description" content="Budget, legal, and project spending summaries for resident review." />
+  <link rel="stylesheet" href="../assets/css/site.css" />
+</head>
+<body id="top">
+<header>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        OurHOAFuture.com
+        <span class="badge">Resident Information Hub</span>
+      </div>
+                  <nav>
+        <a href="../index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a class="active" href="spending.html">Spending</a>
+        <a href="documents.html">Documents</a>
+        <a href="photos.html">Photos</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+    </div>
+    <div class="context-ribbon">Cross-category spending summary: budget anomalies, legal/admin costs, and project totals.</div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section>
+    <div class="section-title">
+      <h2>Spending Overview</h2>
+      <div class="hint">Combined metrics across available data files</div>
+    </div>
+    <div class="summary-grid">
+      <div class="summary-card">
+        <div class="summary-label">Budget anomaly rows</div>
+        <div class="summary-value" id="sum-anomaly-rows">-</div>
+        <div class="summary-meta" id="sum-anomaly-updated">Updated: -</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-label">Legal/Admin total</div>
+        <div class="summary-value" id="sum-legal-total">-</div>
+        <div class="summary-meta">Sum of legal_expenses amount rows</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-label">Project spending total</div>
+        <div class="summary-value" id="sum-project-total">-</div>
+        <div class="summary-meta">Sum of projects total_project_cost rows</div>
+      </div>
+    </div>
+    <p class="small">Records are summarized from CSV data maintained for this site; primary source documents are available in the official HOA portal.</p>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <h2>Budget Anomalies</h2>
+      <div class="hint">Largest changes first</div>
+    </div>
+    <div class="card table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Prior</th>
+            <th>Current</th>
+            <th>Change</th>
+            <th>Notes</th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody id="anomaly-body">
+          <tr><td colspan="6" class="small">Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <h2>Legal & Administrative Expenses</h2>
+      <div class="hint">By period, vendor, and category</div>
+    </div>
+    <div class="card table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Period</th>
+            <th>Vendor/Firm</th>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Notes</th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody id="legal-body">
+          <tr><td colspan="6" class="small">Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <h2>Project Spending Ranking</h2>
+      <div class="hint">Highest total project costs at top</div>
+    </div>
+    <div class="card table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Project</th>
+            <th>Status</th>
+            <th>Total Project Cost</th>
+            <th>Project Page</th>
+          </tr>
+        </thead>
+        <tbody id="project-body">
+          <tr><td colspan="4" class="small">Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <div>&copy; <span id="y"></span> OurHOAFuture.com &mdash; Informational site for residents. Content is data-driven and source-referenced.</div>
+      <div class="footer-links">
+        <a href="contact.html">Contact</a>
+        <a href="#top">Back to top &uarr;</a>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/js/site.js"></script>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    const sumAnomalyRows = document.getElementById("sum-anomaly-rows");
+    const sumAnomalyUpdated = document.getElementById("sum-anomaly-updated");
+    const sumLegalTotal = document.getElementById("sum-legal-total");
+    const sumProjectTotal = document.getElementById("sum-project-total");
+
+    const anomalyBody = document.getElementById("anomaly-body");
+    const legalBody = document.getElementById("legal-body");
+    const projectBody = document.getElementById("project-body");
+
+    function projectHref(slug) {
+      if (!slug) return "-";
+      if (slug === "garage-project") return "../garage-project.html";
+      if (slug === "roof-project") return "roof-project.html";
+      return "-";
+    }
+
+    function renderAnomalies(rows) {
+      const sorted = rows
+        .slice()
+        .sort((a, b) => (SiteUtils.toNumber(b.change) ?? Number.NEGATIVE_INFINITY) - (SiteUtils.toNumber(a.change) ?? Number.NEGATIVE_INFINITY));
+
+      sumAnomalyRows.textContent = String(rows.length);
+      const updates = rows.map((r) => (r.updated_at || "").trim()).filter(Boolean).sort();
+      sumAnomalyUpdated.textContent = updates.length ? `Updated: ${updates[updates.length - 1]}` : "Updated: Not provided";
+
+      anomalyBody.innerHTML = "";
+      sorted.forEach((r) => {
+        const safe = SiteUtils.safeLink(r.source_url);
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${r.category || "-"}</td>
+          <td>${SiteUtils.formatCurrency(r.prior)}</td>
+          <td>${SiteUtils.formatCurrency(r.current)}</td>
+          <td>${SiteUtils.formatCurrency(r.change)}</td>
+          <td>${r.notes || "-"}</td>
+          <td>${safe ? `<a href="${safe}" target="_blank" rel="noopener">View source</a>` : "HOA portal"}</td>
+        `;
+        anomalyBody.appendChild(tr);
+      });
+    }
+
+    function renderLegal(rows) {
+      const total = rows.reduce((acc, r) => acc + (SiteUtils.toNumber(r.amount) || 0), 0);
+      sumLegalTotal.textContent = SiteUtils.formatCurrency(total);
+
+      legalBody.innerHTML = "";
+      rows.forEach((r) => {
+        const safe = SiteUtils.safeLink(r.source_url);
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${r.period || "-"}</td>
+          <td>${r.vendor_or_firm || "-"}</td>
+          <td>${r.category || "-"}</td>
+          <td>${SiteUtils.formatCurrency(r.amount)}</td>
+          <td>${r.notes || "-"}</td>
+          <td>${safe ? `<a href="${safe}" target="_blank" rel="noopener">View source</a>` : "HOA portal"}</td>
+        `;
+        legalBody.appendChild(tr);
+      });
+    }
+
+    function renderProjects(rows) {
+      const sorted = rows
+        .slice()
+        .sort((a, b) => (SiteUtils.toNumber(b.total_project_cost) ?? Number.NEGATIVE_INFINITY) - (SiteUtils.toNumber(a.total_project_cost) ?? Number.NEGATIVE_INFINITY));
+
+      const total = rows.reduce((acc, r) => acc + (SiteUtils.toNumber(r.total_project_cost) || 0), 0);
+      sumProjectTotal.textContent = SiteUtils.formatCurrency(total);
+
+      projectBody.innerHTML = "";
+      sorted.forEach((r) => {
+        const href = projectHref((r.project_slug || "").trim());
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${r.project_name || "-"}</td>
+          <td>${r.status || "-"}</td>
+          <td>${SiteUtils.formatCurrency(r.total_project_cost)}</td>
+          <td>${href === "-" ? "-" : `<a href="${href}">View page</a>`}</td>
+        `;
+        projectBody.appendChild(tr);
+      });
+    }
+
+    Promise.all([
+      SiteUtils.loadCSV("../data/budget_anomalies.csv"),
+      SiteUtils.loadCSV("../data/legal_expenses.csv"),
+      SiteUtils.loadCSV("../data/projects.csv")
+    ])
+      .then(([anomalies, legal, projects]) => {
+        renderAnomalies(anomalies);
+        renderLegal(legal);
+        renderProjects(projects);
+      })
+      .catch((err) => {
+        anomalyBody.innerHTML = `<tr><td colspan="6" class="small">Unable to load data: ${err.message}</td></tr>`;
+        legalBody.innerHTML = `<tr><td colspan="6" class="small">Unable to load data: ${err.message}</td></tr>`;
+        projectBody.innerHTML = `<tr><td colspan="4" class="small">Unable to load data: ${err.message}</td></tr>`;
+      });
+  </script>
+</footer>
+</body>
+</html>
+
+

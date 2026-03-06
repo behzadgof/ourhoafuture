@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Project Reviews | OurHOAFuture.com</title>
-  <meta name="description" content="Major project cost breakdowns and supporting documents." />
+  <title>Projects | OurHOAFuture.com</title>
+  <meta name="description" content="Project summaries for major HOA expenditures including garage and roof work." />
   <link rel="stylesheet" href="../assets/css/site.css" />
 </head>
 <body id="top">
@@ -15,90 +15,81 @@
         OurHOAFuture.com
         <span class="badge">Resident Information Hub</span>
       </div>
-      <nav>
+                  <nav>
         <a href="../index.html">Home</a>
-        <a class="active" href="../garage-project.html">Garage Project</a>
-        <a href="financial.html">Budget Analysis</a>
+        <a class="active" href="projects.html">Projects</a>
+        <a href="spending.html">Spending</a>
         <a href="documents.html">Documents</a>
         <a href="photos.html">Photos</a>
         <a href="faq.html">FAQ</a>
       </nav>
     </div>
-    <div class="context-ribbon">Resident transparency portal created in connection with HOA board candidacy; all content is document-based and informational.</div>
+    <div class="context-ribbon">Evidence-first project transparency hub. Source files are maintained in the official HOA portal.</div>
   </div>
 </header>
 
 <main class="wrap">
   <section>
     <div class="section-title">
-      <h2>Garage Parking Project &mdash; Cost Summary</h2>
-      <div class="hint">High-level summary based on figures available to residents</div>
+      <h2>Project Hub</h2>
+      <div class="hint">Major projects, timelines, and cost summaries</div>
     </div>
-
-    <div class="card">
-      <p>
-        This section summarizes the cost structure of the garage repair project introduced in 2025. The figures below reflect high-level totals derived from association records available to residents.
-      </p>
-
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Item</th>
-              <th>Amount</th>
-            </tr>
-          </thead>
-          <tbody id="garage-breakdown-body">
-            <tr><td colspan="2" class="small">Loading project summary...</td></tr>
-          </tbody>
-        </table>
+    <div class="summary-grid">
+      <div class="summary-card">
+        <div class="summary-label">Tracked projects</div>
+        <div class="summary-value" id="sum-project-count">-</div>
+        <div class="summary-meta">Rows loaded from <code>data/projects.csv</code></div>
       </div>
-
-      <ul id="garage-notes">
-        <li>The original contract amount communicated was approximately $35,000.</li>
-        <li>Additional labor and safety-related costs increased the total project cost.</li>
-        <li>The total project cost for the project is approximately $95,000.</li>
-        <li>Supporting records are available to residents through the HOA portal and management.</li>
-      </ul>
-
-      <div class="cost-bars" id="garage-bars">
-        <div class="bar-row">
-          <div class="bar-label">Initial Contract</div>
-          <div class="bar-track"><div class="bar-fill" id="bar-initial"></div></div>
-          <div class="bar-value" id="bar-initial-value">$35K</div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">Additional Costs</div>
-          <div class="bar-track"><div class="bar-fill" id="bar-additional"></div></div>
-          <div class="bar-value" id="bar-additional-value">$60.5K</div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">Total Project Cost</div>
-          <div class="bar-track"><div class="bar-fill" id="bar-total"></div></div>
-          <div class="bar-value" id="bar-total-value">$95K</div>
-        </div>
+      <div class="summary-card">
+        <div class="summary-label">Total project spending</div>
+        <div class="summary-value" id="sum-total-cost">-</div>
+        <div class="summary-meta">Combined total across listed projects</div>
       </div>
-
-      <details style="margin-top:14px;">
-        <summary><strong>Method</strong></summary>
-        <p class="small" style="margin-top:10px;">Stated totals are based on board/management communications; total estimates are based on recorded totals available to residents.</p>
-      </details>
+      <div class="summary-card">
+        <div class="summary-label">Largest tracked project</div>
+        <div class="summary-value" id="sum-largest">-</div>
+        <div class="summary-meta" id="sum-largest-meta">Loading...</div>
+      </div>
     </div>
   </section>
 
   <section>
     <div class="section-title">
-      <h2>Project Summaries</h2>
-      <div class="hint">According to association records and resident-available summaries</div>
+      <h2>Featured Projects</h2>
+      <div class="hint">Start here for project-specific detail pages</div>
     </div>
+    <div class="grid">
+      <article class="tile col-4">
+        <h3>Garage Parking Repair</h3>
+        <p>Contract, change scope, timeline, photo evidence, and supporting cost context.</p>
+        <a class="link" href="../garage-project.html">Open Garage Project</a>
+      </article>
+      <article class="tile col-4">
+        <h3>Roof Replacement Review</h3>
+        <p>Bid-tab versus proposal comparisons, mobilization treatment, and clarification requests.</p>
+        <a class="link" href="roof-project.html">Open Roof Project</a>
+      </article>
+      <article class="tile col-4">
+        <h3>Spending Overview</h3>
+        <p>Cross-project budget, legal/admin spending, and anomaly trends in one place.</p>
+        <a class="link" href="spending.html">Open Spending Hub</a>
+      </article>
+    </div>
+  </section>
 
+  <section>
+    <div class="section-title">
+      <h2>All Tracked Projects</h2>
+      <div class="hint">Search and sort all project rows</div>
+    </div>
     <div class="card">
       <div class="toolbar">
-        <input id="project-search" class="search-input" type="search" placeholder="Search project name or notes" />
+        <input id="project-search" class="search-input" type="search" placeholder="Search project name, notes, or category" />
         <select id="project-sort" class="sort-select">
-          <option value="total-desc">Total project cost (desc)</option>
-          <option value="total-asc">Total project cost (asc)</option>
+          <option value="total-desc">Total cost (desc)</option>
+          <option value="total-asc">Total cost (asc)</option>
           <option value="name-asc">Project name (A-Z)</option>
+          <option value="status-asc">Status</option>
         </select>
       </div>
 
@@ -107,20 +98,23 @@
           <thead>
             <tr>
               <th>Project</th>
-              <th>Year</th>
+              <th>Category</th>
+              <th>Status</th>
+              <th>Period</th>
               <th>Initial Contract</th>
               <th>Additional Costs</th>
-              <th>Total Project Cost</th>
-              <th>Notes</th>
-              <th>Source Reference</th>
+              <th>Total Cost</th>
+              <th>Project Page</th>
+              <th>Source Access</th>
             </tr>
           </thead>
           <tbody id="projects-body">
-            <tr><td colspan="7" class="small">Loading projects...</td></tr>
+            <tr><td colspan="9" class="small">Loading projects...</td></tr>
           </tbody>
         </table>
       </div>
       <div class="data-status" id="projects-status"></div>
+      <p class="small">Source records are maintained in the official HOA portal. This page summarizes posted values for resident review.</p>
     </div>
   </section>
 </main>
@@ -128,7 +122,7 @@
 <footer>
   <div class="wrap">
     <div class="footer-row">
-      <div>&copy; <span id="y"></span> OurHOAFuture.com &mdash; Informational site for residents. Content includes analysis and links to supporting documents.<br />Disclaimer: This website provides high-level summaries and analysis for informational purposes. Supporting records referenced are available to residents through official association channels.</div>
+      <div>&copy; <span id="y"></span> OurHOAFuture.com &mdash; Informational site for residents. Supporting records are available through official HOA channels.</div>
       <div class="footer-links">
         <a href="contact.html">Contact</a>
         <a href="#top">Back to top &uarr;</a>
@@ -143,60 +137,69 @@
     const sortEl = document.getElementById("project-sort");
     const bodyEl = document.getElementById("projects-body");
     const statusEl = document.getElementById("projects-status");
-    const garageBody = document.getElementById("garage-breakdown-body");
 
-    function compactK(value) {
-      const num = SiteUtils.toNumber(value);
-      if (num === null) return "-";
-      if (num % 1000 === 0) return `$${(num / 1000).toFixed(0)}K`;
-      return `$${(num / 1000).toFixed(1)}K`;
+    const sumCountEl = document.getElementById("sum-project-count");
+    const sumTotalEl = document.getElementById("sum-total-cost");
+    const sumLargestEl = document.getElementById("sum-largest");
+    const sumLargestMetaEl = document.getElementById("sum-largest-meta");
+
+    let rows = [];
+
+    function projectHref(slug) {
+      if (!slug) return "-";
+      if (slug === "garage-project") return "../garage-project.html";
+      if (slug === "roof-project") return "roof-project.html";
+      return "-";
     }
 
-    function updateBars(row) {
-      const initial = SiteUtils.toNumber(row.initial_contract) || 0;
-      const additional = SiteUtils.toNumber(row.additional_costs) || 0;
-      const total = SiteUtils.toNumber(row.total_project_cost) || 0;
-      const max = Math.max(initial, additional, total, 1);
-
-      document.getElementById("bar-initial").style.width = `${(initial / max) * 100}%`;
-      document.getElementById("bar-additional").style.width = `${(additional / max) * 100}%`;
-      document.getElementById("bar-total").style.width = `${(total / max) * 100}%`;
-
-      document.getElementById("bar-initial-value").textContent = compactK(initial);
-      document.getElementById("bar-additional-value").textContent = compactK(additional);
-      document.getElementById("bar-total-value").textContent = compactK(total);
+    function periodText(r) {
+      const start = (r.start_date || "").trim();
+      const end = (r.end_date || "").trim();
+      if (start && end) return `${start} to ${end}`;
+      if (start) return `Started ${start}`;
+      return r.year || "-";
     }
 
-    function renderGarageSummary(rows) {
-      const garage = rows.find((r) => (r.project_name || "").toLowerCase().includes("garage")) || rows[0];
-      if (!garage) {
-        garageBody.innerHTML = '<tr><td colspan="2" class="small">No project rows available.</td></tr>';
+    function renderSummary() {
+      sumCountEl.textContent = String(rows.length);
+
+      const total = rows.reduce((acc, r) => {
+        const n = SiteUtils.toNumber(r.total_project_cost);
+        return acc + (n === null ? 0 : n);
+      }, 0);
+      sumTotalEl.textContent = SiteUtils.formatCurrency(total);
+
+      const numeric = rows
+        .map((r) => ({ row: r, total: SiteUtils.toNumber(r.total_project_cost) }))
+        .filter((x) => x.total !== null)
+        .sort((a, b) => b.total - a.total);
+
+      if (!numeric.length) {
+        sumLargestEl.textContent = "-";
+        sumLargestMetaEl.textContent = "No numeric totals available.";
         return;
       }
 
-      garageBody.innerHTML = `
-        <tr><td>Initial Contract Amount</td><td>${SiteUtils.formatCurrency(garage.initial_contract)}</td></tr>
-        <tr><td>Additional Labor / Safety Costs</td><td>${SiteUtils.formatCurrency(garage.additional_costs)}</td></tr>
-        <tr><td>Total Project Cost</td><td>${SiteUtils.formatCurrency(garage.total_project_cost)}</td></tr>
-      `;
-
-      updateBars(garage);
+      const top = numeric[0];
+      sumLargestEl.textContent = SiteUtils.formatCurrency(top.total);
+      sumLargestMetaEl.textContent = `${top.row.project_name || "Project"} (${top.row.status || "Status not listed"})`;
     }
 
-    function visibleRows(rows) {
-      let visible = SiteUtils.filterRows(rows, searchEl.value, ["project_name", "notes", "source_reference"]);
+    function getVisibleRows() {
+      let visible = SiteUtils.filterRows(rows, searchEl.value, ["project_name", "notes", "project_category", "status"]);
       visible = SiteUtils.sortRows(visible, sortEl.value, {
         "total-desc": (a, b) => (SiteUtils.toNumber(b.total_project_cost) ?? Number.NEGATIVE_INFINITY) - (SiteUtils.toNumber(a.total_project_cost) ?? Number.NEGATIVE_INFINITY),
         "total-asc": (a, b) => (SiteUtils.toNumber(a.total_project_cost) ?? Number.POSITIVE_INFINITY) - (SiteUtils.toNumber(b.total_project_cost) ?? Number.POSITIVE_INFINITY),
-        "name-asc": (a, b) => String(a.project_name || "").localeCompare(String(b.project_name || ""))
+        "name-asc": (a, b) => String(a.project_name || "").localeCompare(String(b.project_name || "")),
+        "status-asc": (a, b) => String(a.status || "").localeCompare(String(b.status || ""))
       });
       return visible;
     }
 
-    function renderTable(rows) {
-      const visible = visibleRows(rows);
+    function renderTable() {
+      const visible = getVisibleRows();
       if (!visible.length) {
-        bodyEl.innerHTML = '<tr><td colspan="7" class="small">No project rows match the current filter.</td></tr>';
+        bodyEl.innerHTML = '<tr><td colspan="9" class="small">No rows match the current filter.</td></tr>';
         statusEl.textContent = `Loaded ${rows.length} row(s); showing 0.`;
         return;
       }
@@ -204,14 +207,19 @@
       bodyEl.innerHTML = "";
       visible.forEach((r) => {
         const tr = document.createElement("tr");
+        const href = projectHref((r.project_slug || "").trim());
+        const docUrl = SiteUtils.safeLink(r.document_path);
+
         tr.innerHTML = `
           <td>${r.project_name || "-"}</td>
-          <td>${r.year || r.period || "-"}</td>
+          <td>${r.project_category || "-"}</td>
+          <td>${r.status || "-"}</td>
+          <td>${periodText(r)}</td>
           <td>${SiteUtils.formatCurrency(r.initial_contract)}</td>
           <td>${SiteUtils.formatCurrency(r.additional_costs)}</td>
           <td>${SiteUtils.formatCurrency(r.total_project_cost)}</td>
-          <td>${r.notes || "-"}</td>
-          <td>${r.source_reference || "-"}</td>
+          <td>${href === "-" ? "-" : `<a href="${href}">View page</a>`}</td>
+          <td>${docUrl ? `<a href="${docUrl}" target="_blank" rel="noopener">Portal doc</a>` : "HOA portal"}</td>
         `;
         bodyEl.appendChild(tr);
       });
@@ -219,30 +227,26 @@
       statusEl.textContent = `Loaded ${rows.length} row(s); showing ${visible.length}.`;
     }
 
-    let allRows = [];
-
     function rerender() {
-      renderTable(allRows);
+      renderTable();
     }
 
     searchEl.addEventListener("input", rerender);
     sortEl.addEventListener("change", rerender);
 
     SiteUtils.loadCSV("../data/projects.csv")
-      .then((rows) => {
-        allRows = rows;
-        renderGarageSummary(rows);
-        renderTable(rows);
+      .then((loaded) => {
+        rows = loaded;
+        renderSummary();
+        renderTable();
       })
       .catch((err) => {
-        garageBody.innerHTML = `<tr><td colspan="2" class="small">Unable to load project data: ${err.message}</td></tr>`;
-        bodyEl.innerHTML = `<tr><td colspan="7" class="small">Unable to load project data: ${err.message}</td></tr>`;
-        statusEl.textContent = "Could not load projects CSV.";
+        bodyEl.innerHTML = `<tr><td colspan="9" class="small">Unable to load project data: ${err.message}</td></tr>`;
+        statusEl.textContent = "Could not load projects data file.";
       });
   </script>
 </footer>
 </body>
 </html>
-
 
 
