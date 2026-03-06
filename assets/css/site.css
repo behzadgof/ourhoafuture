@@ -309,6 +309,33 @@ tfoot td{font-weight:700}
   cursor:pointer;
 }
 .chip.active{background:var(--navy);border-color:var(--navy);color:#fff}
+.project-subnav{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:10px 0 18px;
+}
+.project-subnav a{
+  display:inline-flex;
+  align-items:center;
+  border:1px solid var(--border);
+  background:#fff;
+  color:var(--slate);
+  border-radius:999px;
+  padding:7px 12px;
+  font-size:13px;
+  font-weight:700;
+  text-decoration:none;
+}
+.project-subnav a:hover{
+  background:#eef4ff;
+  color:var(--navy);
+}
+.project-subnav a.active{
+  background:var(--navy);
+  border-color:var(--navy);
+  color:#fff;
+}
 .charts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .latest-updates{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .latest-item{
