@@ -157,6 +157,7 @@
   <script src="../assets/js/site.js"></script>
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+    const dataVersion = "2026-03-08-garage-fix";
 
     const sumAnomalyRows = document.getElementById("sum-anomaly-rows");
     const sumAnomalyUpdated = document.getElementById("sum-anomaly-updated");
@@ -242,9 +243,9 @@
     }
 
     Promise.all([
-      SiteUtils.loadCSV("../data/budget_anomalies.csv"),
-      SiteUtils.loadCSV("../data/legal_expenses.csv"),
-      SiteUtils.loadCSV("../data/projects.csv")
+      SiteUtils.loadCSV(`../data/budget_anomalies.csv?v=${dataVersion}`),
+      SiteUtils.loadCSV(`../data/legal_expenses.csv?v=${dataVersion}`),
+      SiteUtils.loadCSV(`../data/projects.csv?v=${dataVersion}`)
     ])
       .then(([anomalies, legal, projects]) => {
         renderAnomalies(anomalies);

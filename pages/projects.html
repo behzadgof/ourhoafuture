@@ -138,6 +138,7 @@
   <script src="../assets/js/site.js"></script>
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+    const dataVersion = "2026-03-08-garage-fix";
 
     const searchEl = document.getElementById("project-search");
     const sortEl = document.getElementById("project-sort");
@@ -240,7 +241,7 @@
     searchEl.addEventListener("input", rerender);
     sortEl.addEventListener("change", rerender);
 
-    SiteUtils.loadCSV("../data/projects.csv")
+    SiteUtils.loadCSV(`../data/projects.csv?v=${dataVersion}`)
       .then((loaded) => {
         rows = loaded;
         renderSummary();
