@@ -4,8 +4,23 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Roof Project Review | OurHOAFuture.com</title>
-  <meta name="description" content="Roof replacement pricing review based on posted engineer bid-tab and contractor proposals." />
+  <meta name="description" content="Roof replacement bid comparison overview based on posted contractor proposals and engineer bid-tab records." />
   <link rel="stylesheet" href="../assets/css/site.css" />
+  <style>
+    .roof-bars {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .roof-bars .bar-row {
+      grid-template-columns: 220px 1fr 160px;
+    }
+    @media (max-width: 700px) {
+      .roof-bars .bar-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body id="top">
 <header>
@@ -37,14 +52,12 @@
 
   <section>
     <div class="section-title">
-      <h2>Roof Replacement Pricing Review</h2>
-      <div class="hint">Evidence-first summary for resident review</div>
+      <h2>Roof Replacement Project - Bid Comparison Overview</h2>
+      <div class="hint">Document-based pricing overview for resident review</div>
     </div>
     <div class="card">
-      <p>
-        This page summarizes posted roof pricing documents in a neutral, comparable format. It distinguishes
-        engineer bid-tab values from detailed contractor proposal values and highlights where a reconciliation would improve comparability.
-      </p>
+      <p>The association has posted several documents related to the proposed roof replacement project. These include contractor proposals and an engineer bid comparison sheet.</p>
+      <p>The figures below summarize the totals appearing in the posted documents so residents can understand the pricing ranges being discussed.</p>
       <div class="callout">
         <strong>Document access:</strong> Original records are maintained in the official HOA portal. This page provides structured summary analysis only.
       </div>
@@ -53,114 +66,182 @@
 
   <section>
     <div class="section-title">
-      <h2>Normalized Comparison</h2>
-      <div class="hint">Do not mix bid-tab totals and proposal totals without basis labels</div>
+      <h2>Contractor Proposal Price Ranges</h2>
+      <div class="hint">Based on the detailed contractor proposals reviewed</div>
     </div>
     <div class="card table-wrap">
       <table>
         <thead>
           <tr>
             <th>Contractor</th>
-            <th>Bid-Tab Total</th>
-            <th>Bid-Tab + Alternates</th>
-            <th>Detailed Proposal (Lower)</th>
-            <th>Detailed Proposal (Higher)</th>
+            <th>Proposal Price Range</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>CARE</td>
-            <td>$735,222.25</td>
-            <td>$884,942.25</td>
-            <td>$899,365.10</td>
-            <td>$961,410.03</td>
-          </tr>
-          <tr>
-            <td>JK Inc</td>
-            <td>$897,819.88</td>
-            <td>$897,819.88</td>
-            <td>about $1,025,504</td>
-            <td>about $1,139,154</td>
-          </tr>
-          <tr>
-            <td>Advanced Roofing</td>
-            <td>$999,153.25</td>
-            <td>$1,064,093.25</td>
-            <td>$1,719,270.56</td>
-            <td>$1,778,603.06</td>
-          </tr>
+          <tr><td>CARE Construction</td><td>$899,000 - $961,000</td></tr>
+          <tr><td>JK Inc</td><td>$1,025,000 - $1,139,000</td></tr>
+          <tr><td>Advanced Roofing</td><td>$1,719,000 - $1,778,000</td></tr>
         </tbody>
       </table>
-      <p class="small">Detailed proposal figures may not be presented on the same pricing basis as the engineer bid-tab sheet.</p>
     </div>
   </section>
 
   <section>
     <div class="section-title">
-      <h2>Advanced Roofing Format Difference</h2>
-      <div class="hint">Two posted pricing formats appear in records</div>
+      <h2>Visual Cost Comparison</h2>
+      <div class="hint">Approximate price ranges from the contractor proposals</div>
     </div>
     <div class="card">
+      <h3>Roof Replacement Proposal Comparison</h3>
+      <div class="roof-bars" role="img" aria-label="Visual comparison of contractor proposal price ranges">
+        <div class="bar-row">
+          <div class="bar-label">CARE Construction</div>
+          <div class="bar-track"><div class="bar-fill" style="width:54%"></div></div>
+          <div class="bar-value">~$0.9M - $0.96M</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">JK Inc</div>
+          <div class="bar-track"><div class="bar-fill" style="width:64%"></div></div>
+          <div class="bar-value">~$1.03M - $1.14M</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Advanced Roofing</div>
+          <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+          <div class="bar-value">~$1.72M - $1.78M</div>
+        </div>
+      </div>
+      <p>This visual representation shows the relative differences between the contractor proposals.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <h2>Engineer Bid Comparison Sheet</h2>
+      <div class="hint">ACG Engineering posted a bid comparison summary</div>
+    </div>
+    <div class="card table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Contractor</th>
+            <th>Bid Tab Total</th>
+            <th>Bid Tab Total + Alternates</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>CARE Construction</td><td>$735,222</td><td>$884,942</td></tr>
+          <tr><td>JK Inc</td><td>$897,819</td><td>$897,819</td></tr>
+          <tr><td>Advanced Roofing</td><td>$999,153</td><td>$1,064,093</td></tr>
+        </tbody>
+      </table>
+      <p>This document is intended to summarize bids for comparison purposes.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <h2>Why Advanced Roofing Appears With Two Different Prices</h2>
+      <div class="hint">Two different document formats show two different totals</div>
+    </div>
+    <div class="card">
+      <p>Residents may notice that Advanced Roofing appears with two very different totals depending on which document is viewed.</p>
+      <p><strong>In the Engineer Bid Comparison Sheet</strong></p>
+      <p>Advanced Roofing appears at approximately: <strong>$999,153</strong></p>
+      <p><strong>In the Contractor Proposal</strong></p>
       <ul>
-        <li>Engineer bid-tab values: $999,153.25 total and $1,064,093.25 with alternates.</li>
-        <li>Detailed proposal values: $1,719,270.56 (Soprema with bond) and $1,778,603.06 (TPO with bond).</li>
+        <li><strong>$1,719,270</strong> (Soprema roofing system with bond)</li>
+        <li><strong>$1,778,603</strong> (TPO roofing system with bond)</li>
       </ul>
-      <p>
-        Posted documents present different totals across document formats. A written reconciliation would help clarify
-        whether differences reflect pricing structure, scope organization, or other assumptions.
-      </p>
+      <p>Different totals can appear when documents are presented in different formats. Possible reasons include:</p>
+      <ul>
+        <li>different cost categories being grouped together</li>
+        <li>bond costs being included or excluded</li>
+        <li>optional work or alternates being treated differently</li>
+        <li>mobilization or general conditions being structured differently</li>
+      </ul>
+      <p>Because these documents present pricing in different formats, the totals may not be directly comparable without additional explanation.</p>
+      <p>Providing a reconciliation between the engineer’s bid comparison sheet and the contractor’s detailed proposal could help residents understand how the <strong>$999K figure</strong> was calculated, how it relates to the <strong>$1.7M proposal</strong>, and which totals are being used for budgeting and decision making.</p>
     </div>
   </section>
 
   <section>
     <div class="section-title">
-      <h2>Mobilization Comparison</h2>
-      <div class="hint">Category treatment may differ by document format</div>
+      <h2>Mobilization Costs Listed in the Bid Documents</h2>
+      <div class="hint">Mobilization may be structured differently by contractor</div>
     </div>
-    <div class="grid">
-      <div class="card col-6 table-wrap">
-        <h3>Engineer Bid-Tab</h3>
-        <table>
-          <thead><tr><th>Contractor</th><th>Mobilization</th></tr></thead>
-          <tbody>
-            <tr><td>CARE</td><td>$15,000</td></tr>
-            <tr><td>Advanced Roofing</td><td>$548,665.84</td></tr>
-            <tr><td>JK Inc</td><td>$41,500</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="card col-6 table-wrap">
-        <h3>Detailed Proposal Treatment</h3>
-        <table>
-          <thead><tr><th>Contractor</th><th>Mobilization treatment</th></tr></thead>
-          <tbody>
-            <tr><td>CARE</td><td>Separate line item (about $15k-$25k depending on version)</td></tr>
-            <tr><td>JK Inc</td><td>Separate line item (about $41,500)</td></tr>
-            <tr><td>Advanced Roofing</td><td>Appears structured differently in proposal format</td></tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="card table-wrap">
+      <table>
+        <thead><tr><th>Contractor</th><th>Mobilization</th></tr></thead>
+        <tbody>
+          <tr><td>CARE Construction</td><td>$15,000</td></tr>
+          <tr><td>Advanced Roofing</td><td>$548,665</td></tr>
+          <tr><td>JK Inc</td><td>$41,500</td></tr>
+        </tbody>
+      </table>
+      <p>Mobilization typically refers to the costs required to start a construction project. These may include:</p>
+      <ul>
+        <li>equipment delivery</li>
+        <li>dumpsters and lifts</li>
+        <li>staging areas</li>
+        <li>temporary protection</li>
+        <li>project setup logistics</li>
+        <li>supervision and safety preparation</li>
+      </ul>
+      <p>Contractors sometimes structure these costs differently depending on their proposal format.</p>
     </div>
-    <p class="small">All contractors appear to include mobilization in some form, but records do not establish identical category structure across all proposals.</p>
   </section>
 
   <section>
     <div class="section-title">
-      <h2>Clarifications That Improve Comparability</h2>
-      <div class="hint">Neutral questions for owners and management</div>
+      <h2>Typical Construction Project Process</h2>
+      <div class="hint">Where these documents appear to fit in a normal project workflow</div>
     </div>
     <div class="card">
       <ol>
-        <li>Which Advanced Roofing total is used for budgeting: bid-tab value or detailed proposal value?</li>
-        <li>Are all contractors pricing the same final scope and quantity takeoff?</li>
-        <li>What costs are included within each contractor's mobilization category?</li>
-        <li>Are bond, electrical work, and alternates treated consistently across all proposals?</li>
-        <li>Has an engineer reconciliation been prepared between bid-tab summary and detailed proposals?</li>
+        <li>The engineer prepares project specifications</li>
+        <li>Contractors submit proposals (bids)</li>
+        <li>The engineer prepares a bid comparison sheet</li>
+        <li>The board selects a contractor</li>
+        <li>A construction contract is negotiated and signed</li>
+        <li>Work is scheduled and begins</li>
       </ol>
-      <p>
-        Providing a reconciliation between bid-tab and proposal totals would improve comparability for all bidders
-        and make the pricing basis clearer for residents.
-      </p>
+      <p>The documents currently posted appear to correspond to the proposal and bid comparison stage of this process.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <h2>Summary</h2>
+      <div class="hint">Proposal ranges reviewed from posted records</div>
+    </div>
+    <div class="card table-wrap">
+      <table>
+        <table>
+          <thead><tr><th>Contractor</th><th>Approximate Proposal Range</th></tr></thead>
+          <tbody>
+            <tr><td>CARE Construction</td><td>$0.9M - $0.96M</td></tr>
+            <tr><td>JK Inc</td><td>$1.03M - $1.14M</td></tr>
+            <tr><td>Advanced Roofing</td><td>$1.72M - $1.78M</td></tr>
+          </tbody>
+        </table>
+      <p>However, the engineer bid comparison sheet lists Advanced Roofing at approximately <strong>$999K</strong>, which is significantly different from the totals appearing in the contractor proposal.</p>
+      <p>Additional clarification from the engineer or board may help explain how the bid comparison sheet relates to the detailed contractor proposals.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <h2>Sources</h2>
+      <div class="hint">Posted project records referenced in this summary</div>
+    </div>
+    <div class="card">
+      <ul>
+        <li>ACG Engineering Bid Comparison Sheet - March 2026</li>
+        <li>Advanced Roofing Proposal - March 2026</li>
+        <li>CARE Construction Proposal - March 2026</li>
+        <li>JK Inc Proposal - March 2026</li>
+      </ul>
+      <p>These documents were used to prepare the summary above.</p>
     </div>
   </section>
 </main>

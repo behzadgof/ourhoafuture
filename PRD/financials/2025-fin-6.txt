@@ -1,0 +1,187 @@
+Below is a Financial Dashboard Markdown page you can use as the main landing page for HOA financial transparency.
+It combines the key insights from the previous pages into one clear dashboard-style page residents can understand in a few minutes.
+
+You can save it as:
+
+/financial-analysis/dashboard.md
+
+or make it the homepage of the financial section.
+
+Turnberry on the Green
+Financial Transparency Dashboard (2025)
+Overview
+
+This dashboard summarizes the key financial trends identified in the 2025 monthly financial statements issued by the association.
+
+The goal is to give residents a clear picture of the building’s financial performance using simplified charts and tables.
+
+Key Financial Indicators
+Indicator	2025 Result
+Operating Income	$5,634,754
+Operating Expenses	$5,812,294
+Operating Result	-$177,539 deficit
+Total Cash (Dec 2025)	$5,182,245
+Reserve Fund (Dec 2025)	$2,962,162
+Administrative Budget Overrun	+$217,462
+Legal Spending	$208,857
+Financial Health Snapshot
+Operating Performance
+Income      ███████████████████████████████████████  $5.63M
+Expenses    ██████████████████████████████████████████ $5.81M
+Deficit                                      -$177k
+
+The association spent more than it collected from operations.
+
+Where the Money Was Spent
+Category	Actual Spending
+Contracts	$1,280,300
+Payroll & Benefits	$1,029,504
+Insurance	$1,023,666
+Utilities	$605,694
+Administrative	$409,526
+Repairs & Maintenance	$281,030
+Expense Distribution
+Contracts              ███████████████████████████
+Payroll                ███████████████████████
+Insurance              ███████████████████████
+Utilities              ███████████
+Administrative         ████████
+Repairs                █████
+
+Contracts, payroll, and insurance account for the largest share of operating expenses.
+
+Budget Variance (Where Spending Exceeded Budget)
+Category	Budget	Actual	Over Budget
+Administrative	$192,064	$409,526	+$217,462
+Utilities	$529,366	$605,694	+$76,328
+Repairs & Maintenance	$250,000	$281,030	+$31,030
+Insurance	$996,844	$1,023,666	+$26,822
+Payroll	$1,018,219	$1,029,504	+$11,285
+Budget Overrun Visualization
+Administrative  ███████████████████████████████  +$217k
+Utilities       ██████████                       +$76k
+Repairs         ████                             +$31k
+Insurance       ███                              +$26k
+Payroll         █                                +$11k
+
+Administrative costs represent the largest deviation from budget.
+
+Legal Expense Growth
+
+Legal expenses increased significantly during the year.
+
+Date	Legal Expense YTD
+March 2025	$61,126
+June 2025	$121,178
+December 2025	$208,857
+Legal Expense Chart
+Mar    ███████
+Jun    ███████████████
+Dec    █████████████████████████████
+
+Annual budget: $100,000
+Actual spending: $208,857
+
+Cash Balance Trend
+
+Total cash increased during 2025.
+
+Month	Cash Balance
+Mar 2025	$3.5M
+Jun 2025	$3.8M
+Aug 2025	$4.7M
+Nov 2025	$5.1M
+Dec 2025	$5.18M
+Cash Trend
+Mar   ███████████████
+Jun   █████████████████
+Aug   ████████████████████████
+Nov   ████████████████████████████
+Dec   █████████████████████████████
+
+Cash growth occurred even though operations ran a deficit.
+
+Reserve Fund Trend
+Month	Reserve Balance
+Mar 2025	$1.48M
+Jun 2025	$1.79M
+Aug 2025	$2.00M
+Nov 2025	$2.86M
+Dec 2025	$2.96M
+Reserve Trend
+Mar   █████████
+Jun   ████████████
+Aug   █████████████
+Nov   ███████████████████
+Dec   ████████████████████
+
+Reserve balances increased during the year.
+
+Financial Warning Indicators
+
+Several issues appear in the financial reports.
+
+Administrative Cost Escalation
+
+Administrative spending exceeded budget by more than $217,000.
+
+Legal Expense Growth
+
+Legal costs exceeded the budget by over $108,000.
+
+Utility Overruns
+
+Utilities exceeded projections by over $76,000.
+
+Financial Statement Notes
+
+Early reports referenced:
+
+missing reconciliations
+
+forensic audit review
+
+pending research on balances
+
+Key Questions for Residents
+
+Residents reviewing the financial statements may wish to ask:
+
+What drove the administrative spending increase?
+
+Why did legal expenses exceed $200,000?
+
+Were financial statement adjustments made after the forensic review?
+
+What explains large receivable fluctuations during the year?
+
+How will the operating deficit be addressed in future budgets?
+
+Source Financial Reports
+
+The dashboard is based on the association’s monthly financial statements.
+
+01-31-2025 Financials
+02-28-2025 Financials
+03-31-2025 Financials
+04-30-2025 Financials
+05-31-2025 Financials
+06-30-2025 Financials
+07-31-2025 Financials
+08-31-2025 Financials
+09-30-2025 Financials
+10-31-2025 Financials
+11-30-2025 Financials
+12-31-2025 Financials
+
+Residents are encouraged to review the original reports for full detail.
+
+Transparency Commitment
+
+Clear financial information helps residents:
+
+understand the building’s finances
+
+participate in informed decision-making
+
+ensure accountability and responsible governance.

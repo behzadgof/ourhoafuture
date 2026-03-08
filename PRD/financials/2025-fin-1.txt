@@ -1,0 +1,145 @@
+Turnberry on the Green
+2025 Operational Financial Analysis
+Overview
+
+The 2025 financial statements indicate that the association experienced a significant operational deficit, driven primarily by administrative overruns, legal expenses, utilities, insurance increases, and repair costs.
+
+While total cash balances increased during the year, the operating budget itself was not sustainable, meaning operating expenses exceeded operating income.
+
+The December 2025 statement reports:
+
+Total Income: $5,634,754.61
+
+Total Expenses: $5,812,294.01
+
+Operating Net Loss: -$177,539.40
+
+This indicates that operations required funding support from cash balances rather than operating income.
+
+Operating Summary (Year End 2025)
+Category	Actual	Budget	Variance	Notes
+Total Operating Income	$5,634,754.61	$5,530,823.43	+$103,931	Income slightly exceeded budget
+Total Operating Expenses	$5,812,294.01	$5,516,793.00	+$295,501	Major overspending
+Operating Net Result	-$177,539.40	Balanced Budget	Deficit	Expenses exceeded income
+Major Expense Overruns
+
+The deficit was driven by several categories significantly exceeding budget.
+
+Category	Actual	Budget	Variance	Impact
+Administrative Expenses	$409,526	$192,064	+$217,462	Largest overrun
+Utilities	$605,694	$529,366	+$76,328	Sustained increases
+Insurance	$1,023,666	$996,844	+$26,822	Rising insurance costs
+Repairs & Maintenance	$281,030	$250,000	+$31,030	Ongoing repair costs
+Payroll & Benefits	$1,029,504	$1,018,219	+$11,285	Slightly over budget
+Legal Expense Growth
+
+Legal expenses significantly exceeded budget.
+
+Period	Legal Expense YTD	Annual Budget	Variance
+March 2025	$61,126	$100,000	Already 61% of budget
+June 2025	$121,178	$100,000	Over budget
+December 2025	$208,857	$100,000	+108% over budget
+
+Legal spending alone represents one of the largest single contributors to the operational deficit.
+
+Utilities Trend
+
+Utilities exceeded budget consistently throughout the year.
+
+Category	Actual	Budget	Variance
+Electricity	Included in utilities	—	Rising energy costs
+Natural Gas	Above budget	—	Higher than projected
+Water & Sewer	Significantly above budget	—	Major contributor
+
+| Total Utilities | $605,694 | $529,366 | +$76,328 |
+
+Administrative Expense Breakdown
+
+Administrative spending more than doubled the planned budget.
+
+Item	Actual	Budget	Variance
+Legal Expenses	$208,857	$100,000	+$108,857
+Professional Fees	Various	—	Contributing factor
+Miscellaneous	Elevated	—	Irregular postings
+Credit Card Pending Transactions	$52,512	—	Accounting irregularity
+
+Total Administrative Spending:
+
+	
+Actual	$409,526
+Budget	$192,064
+Variance	+$217,462
+Cash Position vs Operational Performance
+
+Although operations produced a deficit, total cash increased during the year.
+
+Month	Total Cash
+March 2025	$3,506,796
+June 2025	$3,779,765
+August 2025	$4,703,524
+November 2025	$5,120,413
+December 2025	$5,182,245
+
+Increase in total cash does not indicate healthy operations. It reflects:
+
+Reserve assessments collected
+
+Receivable collections
+
+Timing differences in expenses
+
+Internal accounting adjustments
+
+Reserve Fund Balance
+
+The reserve fund balance increased during the year.
+
+Month	Reserve Fund
+March 2025	$1,484,107
+June 2025	$1,793,441
+August 2025	$2,004,113
+November 2025	$2,857,347
+December 2025	$2,962,162
+
+This indicates that reserves were not depleted overall during 2025.
+
+Key Operational Concerns
+1. Structural Operating Deficit
+
+Operating expenses exceeded income by $177,539.
+
+2. Administrative Overspending
+
+Administrative spending exceeded budget by $217,462, primarily due to legal expenses.
+
+3. High Legal Costs
+
+Legal expenses were more than double the annual budget.
+
+4. Rising Utility Costs
+
+Utilities exceeded projections by $76,328.
+
+5. Accounting Irregularities
+
+Early financial statements noted:
+
+Missing bank reconciliation
+
+Pending forensic audit
+
+Unreconciled accounts
+
+Large receivable fluctuations
+
+Questions Residents Should Ask
+
+Why did administrative expenses exceed budget by over $217,000?
+
+What caused legal costs to exceed budget by more than 100%?
+
+What explains the large fluctuations in receivables and internal transfers?
+
+Were budget controls and approvals properly enforced?
+
+What actions are being taken to prevent operational deficits in future budgets?

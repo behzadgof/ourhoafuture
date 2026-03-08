@@ -1,0 +1,169 @@
+Your instinct is exactly right: if residents have to dig to find the financial story, most of them never will. The homepage needs to visually punch them in the face with the key numbers while still keeping your profile and campaign message.
+
+After reviewing your homepage HTML, the problem is clear:
+
+Your homepage currently opens with mission language and navigation, not the financial reality. The key financial numbers only appear deeper in the site. 
+
+index
+
+Your financial dashboard itself is well designed with cards and graphs, but it lives on a separate page, so the impact is lost unless someone clicks into it. 
+
+financial
+
+The solution is not moving the financial page.
+The solution is creating a “Financial Shock Section” on the homepage that links into the deeper dashboard.
+
+Recommended Homepage Strategy
+
+The homepage should follow this order:
+
+1️⃣ Hero Message (keep it)
+
+Your current hero message is good.
+
+But immediately after it, insert:
+
+2️⃣ Financial Reality Section (NEW)
+
+This becomes the visual punch.
+
+Example:
+
+-----------------------------------
+TURNBERRY 2025 FINANCIAL SNAPSHOT
+-----------------------------------
+
+Operating Deficit
+-$177,539
+
+Administrative Overrun
++$217,462
+
+Legal Spending
+$208,857
+
+Utilities Over Budget
++$76,328
+
+These should appear as large red cards.
+
+Residents should see this before they scroll.
+
+Visual Layout (Homepage)
+Hero Section
+↓
+FINANCIAL SNAPSHOT (impact section)
+↓
+Charts Preview
+↓
+About Behzad
+↓
+Community Priorities
+↓
+Site Navigation
+Homepage Financial Shock Section (HTML you should add)
+
+Add this after the hero section in index.html.
+
+<section class="panel financial-highlight">
+  <div class="section-title">
+    <h2>2025 Financial Snapshot</h2>
+  </div>
+
+  <div class="money-grid">
+    
+    <div class="money-card total">
+      <div class="money-label">Operating Deficit</div>
+      <div class="money-value">-$177,539</div>
+      <div class="money-note">Expenses exceeded income</div>
+    </div>
+
+    <div class="money-card">
+      <div class="money-label">Administrative Overrun</div>
+      <div class="money-value">+$217,462</div>
+      <div class="money-note">More than double the budget</div>
+    </div>
+
+    <div class="money-card">
+      <div class="money-label">Legal Spending</div>
+      <div class="money-value">$208,857</div>
+      <div class="money-note">Over 100% above budget</div>
+    </div>
+
+    <div class="money-card">
+      <div class="money-label">Utility Overrun</div>
+      <div class="money-value">+$76,328</div>
+      <div class="money-note">Utilities exceeded projections</div>
+    </div>
+
+  </div>
+
+  <div class="cta-row" style="margin-top:20px;">
+    <a class="btn btn-accent" href="pages/financial.html">
+      View Full Financial Dashboard
+    </a>
+  </div>
+
+</section>
+Why This Works
+
+Residents immediately see:
+
+DEFICIT
+ADMIN OVERSPENDING
+LEGAL COSTS
+UTILITY OVERAGES
+
+without clicking anything.
+
+Then they can click to explore deeper.
+
+Second Trick (Very Powerful)
+
+Add a mini chart preview on the homepage.
+
+Example:
+
+Where the Money Went
+Contracts          █████████████████
+Payroll            █████████████
+Insurance          █████████████
+Utilities          ███████
+Administrative     █████
+
+This makes the financial story visual within 3 seconds.
+
+Third Trick (Psychology)
+
+Put your profile AFTER the financial section, not before.
+
+Reason:
+
+Visitors first see the problem
+
+Then they see who is proposing solutions
+
+This increases credibility.
+
+Suggested Homepage Order
+Hero message
+↓
+Financial Snapshot
+↓
+Expense Chart
+↓
+About Behzad
+↓
+Community Priorities
+↓
+Portal navigation
+One More Extremely Powerful Idea
+
+Add a persistent banner at the top:
+
+2025 HOA Financial Summary
+Operating deficit: $177,539
+Administrative over budget: $217,462
+View Financial Dashboard →
+
+This appears on every page of the site.

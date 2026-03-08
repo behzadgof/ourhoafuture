@@ -1,0 +1,138 @@
+Below is a complete graphical markdown section you can place on your website to explain the entire roof project bids visually for residents.
+It keeps the tone neutral, highlights the numbers clearly, and uses simple charts that render well on GitHub Pages.
+
+You can place this after your roof explanation page.
+
+Roof Replacement Project – Bid Comparison Overview
+
+The association has posted several documents related to the proposed roof replacement project.
+These include contractor proposals and an engineer bid comparison sheet.
+
+The figures below summarize the totals appearing in the posted documents so residents can understand the pricing ranges being discussed.
+
+Contractor Proposal Price Ranges
+
+Based on the detailed contractor proposals reviewed:
+
+Contractor	Proposal Price Range
+CARE Construction	$899,000 – $961,000
+JK Inc	$1,025,000 – $1,139,000
+Advanced Roofing	$1,719,000 – $1,778,000
+Visual Cost Comparison
+
+Approximate price ranges from the contractor proposals.
+
+Roof Replacement Proposal Comparison
+(scale: each █ ≈ $100k)
+
+CARE Construction      █████████████
+                       ~$0.9M – $0.96M
+
+JK Inc                 ████████████████
+                       ~$1.03M – $1.14M
+
+Advanced Roofing       ██████████████████████████
+                       ~$1.72M – $1.78M
+
+This visual representation shows the relative differences between the contractor proposals.
+
+Engineer Bid Comparison Sheet
+
+The project engineer (ACG Engineering) also posted a bid comparison sheet summarizing totals submitted by contractors.
+
+Contractor	Bid Tab Total	Bid Tab Total + Alternates
+CARE Construction	$735,222	$884,942
+JK Inc	$897,819	$897,819
+Advanced Roofing	$999,153	$1,064,093
+
+This document is intended to summarize bids for comparison purposes.
+
+Why Advanced Roofing Appears With Two Different Prices
+
+Residents may notice that Advanced Roofing appears with two very different totals depending on which document is viewed.
+
+In the Engineer Bid Comparison Sheet
+
+Advanced Roofing appears at approximately:
+
+$999,153
+
+In the Contractor Proposal
+
+Advanced Roofing's detailed proposal lists totals of approximately:
+
+$1,719,270 (Soprema roofing system with bond)
+
+$1,778,603 (TPO roofing system with bond)
+
+Because these documents present pricing in different formats, the totals may not be directly comparable without additional explanation.
+
+Mobilization Costs Listed in the Bid Documents
+
+The engineer bid sheet lists the following mobilization values:
+
+Contractor	Mobilization
+CARE Construction	$15,000
+Advanced Roofing	$548,665
+JK Inc	$41,500
+
+Mobilization typically refers to the costs required to start a construction project. These may include:
+
+equipment delivery
+
+dumpsters and lifts
+
+staging areas
+
+temporary protection
+
+project setup logistics
+
+supervision and safety preparation
+
+Contractors sometimes structure these costs differently depending on their proposal format.
+
+Typical Construction Project Process
+
+Roof replacement projects normally follow this process:
+
+The engineer prepares project specifications
+
+Contractors submit proposals (bids)
+
+The engineer prepares a bid comparison sheet
+
+The board selects a contractor
+
+A construction contract is negotiated and signed
+
+Work is scheduled and begins
+
+The documents currently posted appear to correspond to the proposal and bid comparison stage of this process.
+
+Summary
+
+Based on the contractor proposals reviewed:
+
+Contractor	Approximate Proposal Range
+CARE Construction	$0.9M – $0.96M
+JK Inc	$1.03M – $1.14M
+Advanced Roofing	$1.72M – $1.78M
+
+However, the engineer bid comparison sheet lists Advanced Roofing at approximately $999K, which is significantly different from the totals appearing in the contractor proposal.
+
+Additional clarification from the engineer or board may help explain how the bid comparison sheet relates to the detailed contractor proposals.
+
+Sources
+
+Documents posted for the roof project include:
+
+ACG Engineering Bid Comparison Sheet – March 2026
+
+Advanced Roofing Proposal – March 2026
+
+CARE Construction Proposal – March 2026
+
+JK Inc Proposal – March 2026
+
+These documents were used to prepare the summary above.
