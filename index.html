@@ -7,6 +7,34 @@
   <meta name="description" content="Financial analysis, project documentation, and transparency information for Turnberry on the Green residents." />
   <link rel="stylesheet" href="assets/css/site.css" />
   <style>
+    .homepage-switch {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 14px 0 18px;
+    }
+    .homepage-switch a,
+    .homepage-switch span {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--slate);
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .homepage-switch span.active {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: #fff;
+    }
+    .homepage-switch a:hover {
+      background: #eef4ff;
+      text-decoration: none;
+    }
     .financial-highlight .money-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -76,6 +104,11 @@
 </header>
 
 <main class="wrap home-main">
+  <div class="homepage-switch" aria-label="Homepage version switcher">
+    <span class="active">Current Home</span>
+    <a href="index-financial-alt.html">Compare Financial-First Home</a>
+  </div>
+
   <section class="panel">
     <div class="hero-grid">
       <div class="card">
