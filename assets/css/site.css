@@ -379,6 +379,15 @@ tfoot td{font-weight:700}
   border:1px solid #c7d8ec;
 }
 .gallery-item figcaption{margin-top:8px;font-size:13px;color:var(--muted)}
+.document-figure{margin:0}
+.document-figure img{
+  width:100%;
+  border-radius:10px;
+  display:block;
+  border:1px solid #c7d8ec;
+  background:#fff;
+}
+.document-figure figcaption{margin-top:8px;font-size:13px;color:var(--muted)}
 .cost-markup{
   position:absolute;
   top:18px;
