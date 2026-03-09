@@ -3,84 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Our HOA Future | Transparency and Financial Analysis</title>
-  <meta name="description" content="Financial analysis, project documentation, and transparency information for Turnberry on the Green residents." />
+  <title>Our HOA Future | Resident Information Resource</title>
+  <meta name="description" content="Resident information resource reproducing figures and references appearing in official association records posted in the HOA portal." />
   <link rel="stylesheet" href="assets/css/site.css" />
-  <style>
-    .homepage-switch {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin: 14px 0 18px;
-    }
-    .homepage-switch a,
-    .homepage-switch span {
-      display: inline-flex;
-      align-items: center;
-      border: 1px solid var(--border);
-      background: #fff;
-      color: var(--slate);
-      border-radius: 999px;
-      padding: 7px 12px;
-      font-size: 13px;
-      font-weight: 700;
-      text-decoration: none;
-    }
-    .homepage-switch span.active {
-      background: var(--navy);
-      border-color: var(--navy);
-      color: #fff;
-    }
-    .homepage-switch a:hover {
-      background: #eef4ff;
-      text-decoration: none;
-    }
-    .financial-highlight .money-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-    }
-    .financial-highlight .money-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px;
-      border-top: 4px solid #b42318;
-      box-shadow: var(--shadow);
-      background: linear-gradient(180deg, #fff, #fff8f7);
-    }
-    .financial-highlight .money-card.total {
-      border-top-width: 6px;
-      background: linear-gradient(180deg, #fff5f4, #ffe9e6);
-    }
-    .financial-highlight .money-label {
-      font-size: 12px;
-      font-weight: 800;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: .3px;
-    }
-    .financial-highlight .money-value {
-      margin-top: 6px;
-      font-family: "Montserrat",ui-sans-serif,system-ui,sans-serif;
-      font-size: 36px;
-      line-height: 1.05;
-      font-weight: 800;
-      color: #8f1d17;
-    }
-    .financial-highlight .money-note {
-      margin-top: 6px;
-      font-size: 13px;
-      color: var(--muted);
-    }
-    @media (max-width: 1100px) {
-      .financial-highlight .money-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 700px) {
-      .financial-highlight .money-grid { grid-template-columns: 1fr; }
-      .financial-highlight .money-value { font-size: 30px; }
-    }
-  </style>
 </head>
 <body id="top">
 <header>
@@ -88,9 +13,9 @@
     <div class="topbar">
       <div class="brand">
         OurHOAFuture.com
-        <span class="badge">Resident Information Hub</span>
+        <span class="badge">Resident Information Resource</span>
       </div>
-                  <nav>
+      <nav>
         <a class="active" href="index.html">Home</a>
         <a href="pages/projects.html">Projects</a>
         <a href="pages/spending.html">Spending</a>
@@ -99,188 +24,100 @@
         <a href="pages/faq.html">FAQ</a>
       </nav>
     </div>
-    <div class="context-ribbon">Resident transparency portal created in connection with HOA board candidacy; all content is document-based and informational.</div>
+    <div class="context-ribbon">Figures and references appearing in posted association records are organized here for resident review.</div>
   </div>
 </header>
 
-<main class="wrap home-main">
-  <div class="homepage-switch" aria-label="Homepage version switcher">
-    <span class="active">Current Home</span>
-    <a href="index-financial-alt.html">Compare Financial-First Home</a>
-  </div>
-
-  <section class="panel">
-    <div class="hero-grid">
-      <div class="card">
-        <h1>Transparency • Stability • Responsible Financial Stewardship</h1>
-        <p class="subhead">Financial analysis, project summaries, and supporting information for Turnberry on the Green residents.</p>
-        <div class="cta-row">
-          <a class="btn btn-accent" href="pages/projects.html">View Projects</a>
-          <a class="btn btn-secondary" href="pages/spending.html">View Spending</a>
-          <a class="btn btn-secondary" href="pages/documents.html">Documents &amp; Records</a>
-        </div>
-      </div>
-      <div class="card">
-        <h3>Purpose</h3>
-        <p>This website is designed to help residents review high-level financial summaries and project information in one place.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel">
+<main class="wrap">
+  <section>
     <div class="section-title">
-      <h2>2025 Financial Snapshot</h2>
-    </div>
-    <div class="financial-highlight">
-      <div class="money-grid">
-        <div class="money-card total">
-          <div class="money-label">Operating Deficit</div>
-          <div class="money-value">-$177,539</div>
-          <div class="money-note">Expenses exceeded income</div>
-        </div>
-        <div class="money-card">
-          <div class="money-label">Administrative Overrun</div>
-          <div class="money-value">+$217,462</div>
-          <div class="money-note">More than double the budget</div>
-        </div>
-        <div class="money-card">
-          <div class="money-label">Legal Spending</div>
-          <div class="money-value">$208,857</div>
-          <div class="money-note">Over 100% above budget</div>
-        </div>
-        <div class="money-card">
-          <div class="money-label">Utility Overrun</div>
-          <div class="money-value">+$76,328</div>
-          <div class="money-note">Utilities exceeded projections</div>
-        </div>
-      </div>
-      <div class="cta-row" style="margin-top:20px;">
-        <a class="btn btn-accent" href="pages/financial.html">View Full Financial Dashboard</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel">
-    <div class="section-title">
-      <h2>Where the Money Went</h2>
+      <h1>Our HOA Future</h1>
     </div>
     <div class="card">
-      <div class="cost-bars" role="img" aria-label="Preview of major operating expense categories">
-        <div class="bar-row">
-          <div class="bar-label">Contracts</div>
-          <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
-          <div class="bar-value">$1,280,300</div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">Payroll</div>
-          <div class="bar-track"><div class="bar-fill" style="width:80%"></div></div>
-          <div class="bar-value">$1,029,504</div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">Insurance</div>
-          <div class="bar-track"><div class="bar-fill" style="width:80%"></div></div>
-          <div class="bar-value">$1,023,666</div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">Utilities</div>
-          <div class="bar-track"><div class="bar-fill" style="width:47%"></div></div>
-          <div class="bar-value">$605,694</div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">Administrative</div>
-          <div class="bar-track"><div class="bar-fill" style="width:32%"></div></div>
-          <div class="bar-value">$409,526</div>
-        </div>
-      </div>
-      <p class="small">Contracts, payroll, and insurance represent the largest cost centers in the building.</p>
+      <p class="subhead">Resident Information Resource</p>
+      <p>This site is a resident-created resource that reproduces figures and references appearing in official association records posted in the HOA portal. All content is sourced exclusively from documents available to unit owners.</p>
     </div>
   </section>
 
-  <section class="panel">
-    <div class="section-title">
-      <h2>About Behzad Ghofranian</h2>
-    </div>
-    <div class="about-grid">
-      <div class="card">
-        <p>Over 20 years of experience in financial oversight, budgeting systems, and operational controls within a nationally recognized financial organization.</p>
-        <p>I work daily with accountants reviewing budgets, vendor contracts, expenditures, and financial reporting processes to support transparency, compliance, and accountability.</p>
-        <p>I also taught for 15 years, bringing strong communication, integrity, and responsibility to every leadership role.</p>
-      </div>
-      <div class="card profile-card">
-        <img class="profile-photo" src="assets/img/profile/hoa-candidate.png" alt="Behzad Ghofranian profile photo placeholder" />
-      </div>
+  <section>
+    <div class="card callout">
+      <p><strong>Important Notice:</strong> This website is an independent resident-created resource and is not affiliated with, endorsed by, or operated by the condominium association. No opinions, conclusions, interpretations, or comparisons are expressed or implied. Unit owners should review the original documents directly in the official HOA portal and form their own independent judgments. Information is provided solely for informational purposes in accordance with Florida Statute 720.303 (access to official records).</p>
     </div>
   </section>
 
-  <section class="panel">
+  <section>
     <div class="section-title">
-      <h2>Why This Site Exists</h2>
+      <h2>2025 Financial Figures Appearing in Posted Records</h2>
     </div>
     <div class="card">
-      <p>Our community has experienced increased assessments, special insurance assessments, and major projects requiring clearer cost transparency.</p>
-      <p>This site was created to help residents better understand budgets, project costs, and how association funds are being used through summary analysis and supporting information.</p>
-      <p>The site provides:</p>
+      <p>The following figures appear in financial records posted in the official HOA portal:</p>
       <ul>
-        <li>project cost breakdowns</li>
-        <li>budget analysis</li>
-        <li>contract summaries</li>
-        <li>visual documentation of major projects</li>
+        <li>Operating result: ($177,539)</li>
+        <li>Administrative line item: $217,462</li>
+        <li>Legal expenditures: $208,857</li>
+        <li>Utility line item: $76,328</li>
+      </ul>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="pages/financial.html">View Detailed Financial Figures</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <h2>Roof Project Documents</h2>
+    </div>
+    <div class="card">
+      <p>Figures from roof-related proposals and comparison documents posted in the HOA portal are available for review.</p>
+      <div class="cta-row">
+        <a class="btn btn-secondary" href="pages/roof-project.html">View Roof Project Figures</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <h2>About the Resource Creator</h2>
+    </div>
+    <div class="card">
+      <p>Background includes over 20 years in financial oversight, budgeting systems, and operational controls within a nationally recognized financial organization, plus 15 years in education.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <h2>Resumen en Espanol</h2>
+    </div>
+    <div class="card">
+      <p>Mas de 20 anos de experiencia en supervision financiera, sistemas presupuestarios y controles operativos en una organizacion financiera reconocida. Antecedentes adicionales en educacion por 15 anos.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <h2>Community Topics Listed for Consideration</h2>
+    </div>
+    <div class="card">
+      <ul>
+        <li>Review of project cost breakdowns appearing in posted records</li>
+        <li>Vendor proposal and contract documents in the HOA portal</li>
+        <li>Budget and reserve planning records</li>
+        <li>Access to official records as provided by law</li>
+        <li>Balanced board representation</li>
+        <li>Long-term property value considerations</li>
       </ul>
     </div>
   </section>
 
-  <section class="panel">
+  <section>
     <div class="section-title">
-      <h2>Community Priorities</h2>
-    </div>
-    <div class="priority-grid">
-      <div class="priority-item"><span class="priority-marker" aria-hidden="true"></span><span>Full cost breakdowns before major project approvals</span></div>
-      <div class="priority-item"><span class="priority-marker" aria-hidden="true"></span><span>Competitive vendor bidding and contract oversight</span></div>
-      <div class="priority-item"><span class="priority-marker" aria-hidden="true"></span><span>Clearer budgets and reserve planning</span></div>
-      <div class="priority-item"><span class="priority-marker" aria-hidden="true"></span><span>Timely access to official records as required by law</span></div>
-      <div class="priority-item"><span class="priority-marker" aria-hidden="true"></span><span>Independent and balanced board representation</span></div>
-      <div class="priority-item"><span class="priority-marker" aria-hidden="true"></span><span>Protection of long-term property values</span></div>
-    </div>
-  </section>
-
-  <section class="panel">
-    <div class="section-title">
-      <h2>Resumen en Español</h2>
+      <h2>How to Use This Resource</h2>
     </div>
     <div class="card">
-      <p>Más de 20 años de experiencia en supervisión financiera, control presupuestario y procesos administrativos en una organización financiera reconocida.</p>
-      <p>Trabajo diariamente con contadores revisando presupuestos, contratos con proveedores y reportes financieros para promover transparencia, cumplimiento y responsabilidad.</p>
-      <p>También fui profesor durante 15 años, aportando comunicación clara e integridad a cada rol de liderazgo.</p>
-      <h3>Prioridades</h3>
-      <ul>
-        <li>Desglose claro de costos antes de aprobar proyectos</li>
-        <li>Evaluación competitiva de proveedores</li>
-        <li>Mejor planificación presupuestaria y de reservas</li>
-        <li>Acceso oportuno a registros oficiales según la ley</li>
-        <li>Representación equilibrada e independiente</li>
-        <li>Protección del valor de las propiedades</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="panel">
-    <div class="section-title">
-      <h2>How to Use This Portal</h2>
-    </div>
-    <div class="card">
-      <p>This portal is organized to help residents review project and spending information quickly.</p>
-      <p>Start with:</p>
-      <ul>
-        <li><strong>Projects</strong> for garage and roof detail pages</li>
-        <li><strong>Spending</strong> for the financial dashboard, budget anomalies, and legal/admin summaries</li>
-        <li><strong>Documents</strong> for references and records index</li>
-      </ul>
-      <p class="small">Primary source records are available through the official HOA portal.</p>
-
+      <p>Use the navigation links above to locate summaries of figures appearing in official records. Primary source documents are available in the official HOA portal.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="pages/projects.html">Projects</a>
         <a class="btn btn-secondary" href="pages/spending.html">Spending</a>
-        <a class="btn btn-secondary" href="pages/financial.html">Financial Dashboard</a>
         <a class="btn btn-secondary" href="pages/documents.html">Documents</a>
       </div>
     </div>
@@ -290,7 +127,7 @@
 <footer>
   <div class="wrap">
     <div class="footer-row">
-      <div>&copy; <span id="y"></span> OurHOAFuture.com &mdash; Informational site for residents. Content includes analysis and links to supporting documents.<br />Disclaimer: This website provides high-level summaries and analysis for informational purposes. Supporting records referenced are available to residents through official association channels.</div>
+      <div>Last updated: March 8, 2026. This site reproduces only information appearing in official association records. Provided for informational purposes only. Residents are encouraged to verify all data directly in the HOA portal per Florida Statute 720.303. No legal, financial, or professional advice is offered.</div>
       <div class="footer-links">
         <a href="pages/contact.html">Contact</a>
         <a href="#top">Back to top &uarr;</a>
@@ -298,12 +135,6 @@
     </div>
   </div>
   <script src="assets/js/site.js"></script>
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
 </footer>
 </body>
 </html>
-
-
-
