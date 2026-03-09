@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Projects | OurHOAFuture.com</title>
-  <meta name="description" content="Project summaries for major HOA expenditures including garage and roof work." />
+  <title>Projects | Our HOA Future</title>
+  <meta name="description" content="Project links and source notice for HOA portal records." />
   <link rel="stylesheet" href="../assets/css/site.css" />
 </head>
 <body id="top">
@@ -15,7 +15,7 @@
         OurHOAFuture.com
         <span class="badge">Resident Information Hub</span>
       </div>
-                  <nav>
+      <nav>
         <a href="../index.html">Home</a>
         <a class="active" href="projects.html">Projects</a>
         <a href="spending.html">Spending</a>
@@ -24,7 +24,7 @@
         <a href="faq.html">FAQ</a>
       </nav>
     </div>
-    <div class="context-ribbon">Evidence-first project transparency hub. Source files are maintained in the official HOA portal.</div>
+    <div class="context-ribbon">Project names and document references are listed here for resident review.</div>
   </div>
 </header>
 
@@ -37,90 +37,59 @@
 
   <section>
     <div class="section-title">
-      <h2>Project Hub</h2>
-      <div class="hint">Major projects, timelines, and cost summaries</div>
+      <h1>Projects</h1>
     </div>
-    <div class="summary-grid">
-      <div class="summary-card">
-        <div class="summary-label">Tracked projects</div>
-        <div class="summary-value" id="sum-project-count">-</div>
-        <div class="summary-meta">Rows loaded from <code>data/projects.csv</code></div>
-      </div>
-      <div class="summary-card">
-        <div class="summary-label">Total project spending</div>
-        <div class="summary-value" id="sum-total-cost">-</div>
-        <div class="summary-meta">Combined total across listed projects</div>
-      </div>
-      <div class="summary-card">
-        <div class="summary-label">Largest tracked project</div>
-        <div class="summary-value" id="sum-largest">-</div>
-        <div class="summary-meta" id="sum-largest-meta">Loading...</div>
-      </div>
+    <div class="card">
+      <p><strong>Source:</strong> All project information below is taken directly from official documents posted in the HOA portal and available to unit owners.</p>
     </div>
   </section>
 
   <section>
     <div class="section-title">
       <h2>Featured Projects</h2>
-      <div class="hint">Start here for project-specific detail pages</div>
     </div>
-    <div class="grid">
-      <article class="tile col-4">
-        <h3>Garage Parking Repair</h3>
-        <p>Contract, change scope, timeline, photo evidence, and supporting cost context.</p>
-        <a class="link" href="../garage-project.html">Open Garage Project</a>
-      </article>
-      <article class="tile col-4">
-        <h3>Roof Replacement Review</h3>
-        <p>Bid-tab versus proposal comparisons, mobilization treatment, and clarification requests.</p>
-        <a class="link" href="roof-project.html">Open Roof Project</a>
-      </article>
-      <article class="tile col-4">
-        <h3>Spending Overview</h3>
-        <p>Cross-project budget, legal/admin spending, and anomaly trends in one place.</p>
-        <a class="link" href="spending.html">Open Spending Hub</a>
-      </article>
+    <div class="card table-wrap">
+      <p>The following major projects have dedicated detail pages based on official records:</p>
+      <table>
+        <thead>
+          <tr><th>Project</th><th>Detail Page</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Garage Parking Repair</td><td><a href="../garage-project.html">View Garage Project Documents</a></td></tr>
+          <tr><td>Roof Replacement</td><td><a href="roof-project.html">View Roof Project Documents</a></td></tr>
+          <tr><td>Spending Overview</td><td><a href="spending.html">View Spending Documents</a></td></tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
   <section>
     <div class="section-title">
-      <h2>All Tracked Projects</h2>
-      <div class="hint">Search and sort all project rows</div>
+      <h2>Documents Available in the Official HOA Portal</h2>
     </div>
     <div class="card">
-      <div class="toolbar">
-        <input id="project-search" class="search-input" type="search" placeholder="Search project name, notes, or category" />
-        <select id="project-sort" class="sort-select">
-          <option value="total-desc">Total cost (desc)</option>
-          <option value="total-asc">Total cost (asc)</option>
-          <option value="name-asc">Project name (A-Z)</option>
-          <option value="status-asc">Status</option>
-        </select>
-      </div>
+      <p>All source contracts, budgets, and financial statements for these projects are posted in the official HOA portal. Unit owners should log into the HOA portal to review the original files directly.</p>
+    </div>
+  </section>
 
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Project</th>
-              <th>Category</th>
-              <th>Status</th>
-              <th>Period</th>
-              <th>Initial Contract</th>
-              <th>Additional Costs</th>
-              <th>Total Cost</th>
-              <th>Project Page</th>
-              <th>Source Access</th>
-            </tr>
-          </thead>
-          <tbody id="projects-body">
-            <tr><td colspan="9" class="small">Loading projects...</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="data-status" id="projects-status"></div>
-      <p class="small">Source records are maintained in the official HOA portal. This page summarizes posted values for resident review.</p>
+  <section>
+    <div class="section-title">
+      <h2>Documents Referenced</h2>
+    </div>
+    <div class="card">
+      <ul>
+        <li>All project-related contracts and financial statements posted in the HOA portal</li>
+      </ul>
+      <p>All documents are available for review by unit owners in accordance with Florida Statute 720.303.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <h2>Important Notice</h2>
+    </div>
+    <div class="card">
+      <p>This page reproduces only project names and links to detail pages based on official records posted in the HOA portal. No conclusions, comparisons, opinions, or interpretations are expressed or implied. Unit owners should review the original documents in the HOA portal and form their own independent judgments. This website is an independent resident-created resource and is not affiliated with or operated by the condominium association.</p>
     </div>
   </section>
 </main>
@@ -128,7 +97,7 @@
 <footer>
   <div class="wrap">
     <div class="footer-row">
-      <div>&copy; <span id="y"></span> OurHOAFuture.com &mdash; Informational site for residents. Supporting records are available through official HOA channels.</div>
+      <div>Last updated: March 8, 2026 | Provided for informational purposes only | Residents are encouraged to verify all information directly in the official HOA portal in accordance with Florida Statute 720.303.</div>
       <div class="footer-links">
         <a href="contact.html">Contact</a>
         <a href="#top">Back to top &uarr;</a>
@@ -136,124 +105,6 @@
     </div>
   </div>
   <script src="../assets/js/site.js"></script>
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-    const dataVersion = "2026-03-08-garage-fix";
-
-    const searchEl = document.getElementById("project-search");
-    const sortEl = document.getElementById("project-sort");
-    const bodyEl = document.getElementById("projects-body");
-    const statusEl = document.getElementById("projects-status");
-
-    const sumCountEl = document.getElementById("sum-project-count");
-    const sumTotalEl = document.getElementById("sum-total-cost");
-    const sumLargestEl = document.getElementById("sum-largest");
-    const sumLargestMetaEl = document.getElementById("sum-largest-meta");
-
-    let rows = [];
-
-    function projectHref(slug) {
-      if (!slug) return "-";
-      if (slug === "garage-project") return "../garage-project.html";
-      if (slug === "roof-project") return "roof-project.html";
-      return "-";
-    }
-
-    function periodText(r) {
-      const start = (r.start_date || "").trim();
-      const end = (r.end_date || "").trim();
-      if (start && end) return `${start} to ${end}`;
-      if (start) return `Started ${start}`;
-      return r.year || "-";
-    }
-
-    function renderSummary() {
-      sumCountEl.textContent = String(rows.length);
-
-      const total = rows.reduce((acc, r) => {
-        const n = SiteUtils.toNumber(r.total_project_cost);
-        return acc + (n === null ? 0 : n);
-      }, 0);
-      sumTotalEl.textContent = SiteUtils.formatCurrency(total);
-
-      const numeric = rows
-        .map((r) => ({ row: r, total: SiteUtils.toNumber(r.total_project_cost) }))
-        .filter((x) => x.total !== null)
-        .sort((a, b) => b.total - a.total);
-
-      if (!numeric.length) {
-        sumLargestEl.textContent = "-";
-        sumLargestMetaEl.textContent = "No numeric totals available.";
-        return;
-      }
-
-      const top = numeric[0];
-      sumLargestEl.textContent = SiteUtils.formatCurrency(top.total);
-      sumLargestMetaEl.textContent = `${top.row.project_name || "Project"} (${top.row.status || "Status not listed"})`;
-    }
-
-    function getVisibleRows() {
-      let visible = SiteUtils.filterRows(rows, searchEl.value, ["project_name", "notes", "project_category", "status"]);
-      visible = SiteUtils.sortRows(visible, sortEl.value, {
-        "total-desc": (a, b) => (SiteUtils.toNumber(b.total_project_cost) ?? Number.NEGATIVE_INFINITY) - (SiteUtils.toNumber(a.total_project_cost) ?? Number.NEGATIVE_INFINITY),
-        "total-asc": (a, b) => (SiteUtils.toNumber(a.total_project_cost) ?? Number.POSITIVE_INFINITY) - (SiteUtils.toNumber(b.total_project_cost) ?? Number.POSITIVE_INFINITY),
-        "name-asc": (a, b) => String(a.project_name || "").localeCompare(String(b.project_name || "")),
-        "status-asc": (a, b) => String(a.status || "").localeCompare(String(b.status || ""))
-      });
-      return visible;
-    }
-
-    function renderTable() {
-      const visible = getVisibleRows();
-      if (!visible.length) {
-        bodyEl.innerHTML = '<tr><td colspan="9" class="small">No rows match the current filter.</td></tr>';
-        statusEl.textContent = `Loaded ${rows.length} row(s); showing 0.`;
-        return;
-      }
-
-      bodyEl.innerHTML = "";
-      visible.forEach((r) => {
-        const tr = document.createElement("tr");
-        const href = projectHref((r.project_slug || "").trim());
-        const docUrl = SiteUtils.safeLink(r.document_path);
-
-        tr.innerHTML = `
-          <td>${r.project_name || "-"}</td>
-          <td>${r.project_category || "-"}</td>
-          <td>${r.status || "-"}</td>
-          <td>${periodText(r)}</td>
-          <td>${SiteUtils.formatCurrency(r.initial_contract)}</td>
-          <td>${SiteUtils.formatCurrency(r.additional_costs)}</td>
-          <td>${SiteUtils.formatCurrency(r.total_project_cost)}</td>
-          <td>${href === "-" ? "-" : `<a href="${href}">View page</a>`}</td>
-          <td>${docUrl ? `<a href="${docUrl}" target="_blank" rel="noopener">Portal doc</a>` : "HOA portal"}</td>
-        `;
-        bodyEl.appendChild(tr);
-      });
-
-      statusEl.textContent = `Loaded ${rows.length} row(s); showing ${visible.length}.`;
-    }
-
-    function rerender() {
-      renderTable();
-    }
-
-    searchEl.addEventListener("input", rerender);
-    sortEl.addEventListener("change", rerender);
-
-    SiteUtils.loadCSV(`../data/projects.csv?v=${dataVersion}`)
-      .then((loaded) => {
-        rows = loaded;
-        renderSummary();
-        renderTable();
-      })
-      .catch((err) => {
-        bodyEl.innerHTML = `<tr><td colspan="9" class="small">Unable to load project data: ${err.message}</td></tr>`;
-        statusEl.textContent = "Could not load projects data file.";
-      });
-  </script>
 </footer>
 </body>
 </html>
-
-
