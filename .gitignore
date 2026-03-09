@@ -1,0 +1,5 @@
+PRD/
+.worktrees/
+.npm-cache/
+.playwright-tmp/
+.tmp-playwright*.js
