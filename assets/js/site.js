@@ -232,6 +232,8 @@
 
   function submitFormData(form, statusEl, submitBtn) {
     var formData = new FormData(form);
+    // Remove reCAPTCHA token — Web3Forms doesn't validate it server-side
+    formData.delete("g-recaptcha-response");
 
     fetch("https://api.web3forms.com/submit", {
       method: "POST",
