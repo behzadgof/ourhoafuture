@@ -228,13 +228,86 @@
     setupThemeToggle: setupThemeToggle
   };
 
+  var RECAPTCHA_SITE_KEY = "6Lf4kYosAAAAAP-UxefKMQrB3asClnTImpMejEcs";
+
+  function submitFormData(form, statusEl, submitBtn) {
+    var formData = new FormData(form);
+
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    })
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (data.success) {
+          statusEl.textContent = "Thank you! Your message has been sent. We'll respond within 2-3 business days.";
+          statusEl.className = "form-status success";
+          statusEl.style.display = "block";
+          form.reset();
+        } else {
+          statusEl.textContent = "Something went wrong. Please try again or email us directly.";
+          statusEl.className = "form-status error";
+          statusEl.style.display = "block";
+        }
+      })
+      .catch(function () {
+        statusEl.textContent = "Network error. Please check your connection and try again.";
+        statusEl.className = "form-status error";
+        statusEl.style.display = "block";
+      })
+      .finally(function () {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Send Message";
+      });
+  }
+
+  function setupContactForm() {
+    var form = document.getElementById("contactForm");
+    if (!form) return;
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      var statusEl = document.getElementById("formStatus");
+      var submitBtn = document.getElementById("contactSubmit");
+      var tokenInput = document.getElementById("recaptchaToken");
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending...";
+      statusEl.style.display = "none";
+
+      // reCAPTCHA v3: get token in background, then submit
+      if (typeof grecaptcha !== "undefined") {
+        grecaptcha.ready(function () {
+          grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: "contact" })
+            .then(function (token) {
+              tokenInput.value = token;
+              submitFormData(form, statusEl, submitBtn);
+            })
+            .catch(function () {
+              statusEl.textContent = "CAPTCHA verification failed. Please try again.";
+              statusEl.className = "form-status error";
+              statusEl.style.display = "block";
+              submitBtn.disabled = false;
+              submitBtn.textContent = "Send Message";
+            });
+        });
+      } else {
+        // Fallback if reCAPTCHA script didn't load
+        submitFormData(form, statusEl, submitBtn);
+      }
+    });
+  }
+
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function () {
       setupThemeToggle();
       setupMobileNav();
+      setupContactForm();
     });
   } else {
     setupThemeToggle();
     setupMobileNav();
+    setupContactForm();
   }
 }());

@@ -4,8 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact | OurHOAFuture.com</title>
-  <meta name="description" content="Contact information for resident questions about site records and analysis." />
+  <meta name="description" content="Contact form for resident questions about site records and posted information." />
   <link rel="stylesheet" href="../assets/css/site.css" />
+  <script src="https://www.google.com/recaptcha/api.js?render=6Lf4kYosAAAAAP-UxefKMQrB3asClnTImpMejEcs"></script>
 </head>
 <body id="top">
 <header>
@@ -13,13 +14,14 @@
     <div class="topbar">
       <div class="brand">
         OurHOAFuture.com
-        <span class="badge">Resident Information Hub</span>
+        <span class="badge">Resident Information Resource</span>
       </div>
       <nav>
         <a href="../index.html">Home</a>
         <a href="projects.html">Projects</a>
         <a href="spending.html">Spending</a>
         <a href="faq.html">FAQ</a>
+        <a class="active" href="contact.html">Contact</a>
       </nav>
     </div>
     <div class="context-ribbon">Resident transparency portal created in connection with HOA board candidacy; all content is document-based and informational.</div>
@@ -29,23 +31,59 @@
 <main class="wrap">
   <section>
     <div class="section-title">
-      <h2>Contact</h2>
+      <h2>Contact Us</h2>
       <div class="hint">Resident questions about posted information</div>
     </div>
 
     <div class="card">
-      <p>
-        For questions about analysis, document references, or records listed on this site, please send an email.
-      </p>
-      <p>
-        <a class="btn btn-primary" href="mailto:ourhoafuture@gmail.com?subject=Resident%20Question%20-%20OurHOAFuture.com">Email ourhoafuture@gmail.com</a>
-      </p>
-      <p class="small">
-        This contact method is informational only and does not replace official HOA channels for formal submissions.
-      </p>
-      <p class="small">
-        Typical response target: within 2-3 business days.
-      </p>
+      <p>Have a question about the figures or documents referenced on this site? Fill out the form below and we'll get back to you.</p>
+
+      <form id="contactForm" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="11c26278-8598-49f8-b97d-a5efda8d7f34" />
+        <input type="hidden" name="subject" value="New Contact from OurHOAFuture.com" />
+        <input type="hidden" name="from_name" value="OurHOAFuture Contact Form" />
+        <!-- Honeypot spam field -->
+        <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
+
+        <div class="form-group">
+          <label for="name">Name <span class="required">*</span></label>
+          <input type="text" id="name" name="name" required placeholder="Your name" />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email <span class="required">*</span></label>
+          <input type="email" id="email" name="email" required placeholder="your.email@example.com" />
+        </div>
+
+        <div class="form-group">
+          <label for="topic">Subject <span class="required">*</span></label>
+          <select id="topic" name="topic" required>
+            <option value="" disabled selected>Select a subject...</option>
+            <option value="General Question">General Question</option>
+            <option value="Financial Records">Financial Records</option>
+            <option value="Project Information">Project Information</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message <span class="required">*</span></label>
+          <textarea id="message" name="message" rows="5" required placeholder="Type your message here..."></textarea>
+        </div>
+
+        <input type="hidden" id="recaptchaToken" name="g-recaptcha-response" />
+
+        <div id="formStatus" class="form-status" style="display:none"></div>
+
+        <button type="submit" id="contactSubmit" class="btn btn-primary contact-submit">Send Message</button>
+      </form>
+
+      <div class="contact-fallback">
+        <p>You can also email us directly at <a href="mailto:ourhoafuture@gmail.com?subject=Resident%20Question%20-%20OurHOAFuture.com">ourhoafuture@gmail.com</a></p>
+      </div>
+
+      <p class="small">This contact method is informational only and does not replace official HOA channels for formal submissions.</p>
+      <p class="small">Typical response target: within 2-3 business days.</p>
     </div>
   </section>
 </main>
@@ -67,9 +105,3 @@
 </footer>
 </body>
 </html>
-
-
-
-
-
-

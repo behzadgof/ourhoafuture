@@ -523,6 +523,80 @@ html[data-theme="dark"] .document-figure img{
 footer{padding:26px 0 40px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
 .footer-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}
 .footer-links{display:flex;gap:12px;align-items:center}
+/* Contact form */
+.contact-form{display:grid;gap:16px;margin-top:14px}
+.form-group{display:grid;gap:4px}
+.form-group label{
+  font-family:"Montserrat",ui-sans-serif,system-ui,sans-serif;
+  font-weight:700;
+  font-size:14px;
+  color:var(--navy);
+}
+.required{color:var(--danger)}
+.form-group input,
+.form-group select,
+.form-group textarea{
+  padding:10px 12px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:#fff;
+  color:var(--ink);
+  font-family:inherit;
+  font-size:15px;
+  line-height:1.5;
+}
+.form-group textarea{resize:vertical;min-height:120px}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+  border-color:var(--primary);
+  outline:3px solid rgba(29,78,216,.15);
+  outline-offset:0;
+}
+html[data-theme="dark"] .form-group input,
+html[data-theme="dark"] .form-group select,
+html[data-theme="dark"] .form-group textarea{
+  background:#0f1828;
+  border-color:#2b3b55;
+}
+.contact-submit{
+  justify-self:start;
+  padding:12px 28px;
+  font-size:15px;
+  cursor:pointer;
+}
+.contact-submit:disabled{opacity:.6;cursor:not-allowed}
+.form-status{
+  padding:12px 14px;
+  border-radius:10px;
+  font-size:14px;
+  font-weight:600;
+}
+.form-status.success{
+  background:#ecfdf5;
+  border:1px solid #6ee7b7;
+  color:#065f46;
+}
+.form-status.error{
+  background:#fef2f2;
+  border:1px solid #fca5a5;
+  color:#991b1b;
+}
+html[data-theme="dark"] .form-status.success{
+  background:#052e16;
+  border-color:#166534;
+  color:#86efac;
+}
+html[data-theme="dark"] .form-status.error{
+  background:#450a0a;
+  border-color:#991b1b;
+  color:#fca5a5;
+}
+.contact-fallback{
+  margin-top:18px;
+  padding-top:18px;
+  border-top:1px solid var(--border);
+}
 @media (max-width:900px){
   .hero-grid,.about-grid{grid-template-columns:1fr}
   .summary-grid,.charts-grid,.latest-updates{grid-template-columns:1fr}
@@ -606,6 +680,7 @@ footer{padding:26px 0 40px;border-top:1px solid var(--border);color:var(--muted)
     right:14px;
   }
   #garageCostChart{height:260px !important;max-height:260px}
+  .contact-submit{width:100%;justify-self:stretch}
   .footer-row{justify-content:flex-start}
   .footer-links{width:100%;justify-content:flex-start}
 }
