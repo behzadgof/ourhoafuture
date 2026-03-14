@@ -6,7 +6,7 @@
   <title>Contact | OurHOAFuture.com</title>
   <meta name="description" content="Contact form for resident questions about site records and posted information." />
   <link rel="stylesheet" href="../assets/css/site.css" />
-  <script src="https://www.google.com/recaptcha/api.js?render=6Lf4kYosAAAAAP-UxefKMQrB3asClnTImpMejEcs"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body id="top">
 <header>
@@ -71,7 +71,9 @@
           <textarea id="message" name="message" rows="5" required placeholder="Type your message here..."></textarea>
         </div>
 
-        <input type="hidden" id="recaptchaToken" name="g-recaptcha-response" />
+        <div class="form-group">
+          <div class="g-recaptcha" data-sitekey="6LcOlYosAAAAAJWT_OKoKEHynebiOAdnHl475i0P"></div>
+        </div>
 
         <div id="formStatus" class="form-status" style="display:none"></div>
 
