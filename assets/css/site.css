@@ -267,6 +267,11 @@ html[data-theme="dark"] .tagline span{
 .btn.primary:hover{opacity:.95;text-decoration:none}
 .btn-primary:hover{opacity:.95;text-decoration:none}
 .btn:hover{background:#f7fbff;text-decoration:none;border-color:#bcd1ea}
+.btn-primary:hover,.btn-primary:active,.btn-primary:disabled{
+  background:linear-gradient(135deg,var(--navy),#174077);
+  color:#fff;
+  border-color:#163a68;
+}
 html[data-theme="dark"] .btn:hover,
 html[data-theme="dark"] .btn-secondary:hover{
   background:#19263d;
