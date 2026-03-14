@@ -559,6 +559,15 @@ html[data-theme="dark"] .form-group textarea{
   background:#0f1828;
   border-color:#2b3b55;
 }
+.g-recaptcha{
+  overflow:hidden;
+}
+.g-recaptcha iframe{
+  color-scheme:light;
+}
+html[data-theme="dark"] .g-recaptcha iframe{
+  color-scheme:dark;
+}
 .contact-submit{
   justify-self:start;
   padding:12px 28px;
