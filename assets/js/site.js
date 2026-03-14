@@ -228,9 +228,72 @@
     setupThemeToggle: setupThemeToggle
   };
 
+  // Toxicity detection model (loaded once on contact page)
+  var toxicityModel = null;
+  var TOXICITY_THRESHOLD = 0.85;
+
+  function loadToxicityModel() {
+    if (typeof toxicity === "undefined") return;
+    toxicity.load(TOXICITY_THRESHOLD).then(function (model) {
+      toxicityModel = model;
+    });
+  }
+
+  function checkToxicity(text) {
+    if (!toxicityModel) {
+      // Model not loaded yet — allow submission
+      return Promise.resolve(null);
+    }
+    return toxicityModel.classify([text]).then(function (predictions) {
+      var flagged = [];
+      predictions.forEach(function (p) {
+        if (p.results[0] && p.results[0].match === true) {
+          flagged.push(p.label);
+        }
+      });
+      return flagged.length > 0 ? flagged : null;
+    });
+  }
+
+  function submitForm(form, statusEl, submitBtn) {
+    var formData = new FormData(form);
+    formData.delete("g-recaptcha-response");
+
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    })
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (data.success) {
+          statusEl.textContent = "Thank you! Your message has been sent. We'll respond within 2-3 business days.";
+          statusEl.className = "form-status success";
+          statusEl.style.display = "block";
+          form.reset();
+          if (typeof grecaptcha !== "undefined") grecaptcha.reset();
+        } else {
+          statusEl.textContent = "Something went wrong. Please try again or email us directly.";
+          statusEl.className = "form-status error";
+          statusEl.style.display = "block";
+        }
+      })
+      .catch(function () {
+        statusEl.textContent = "Network error. Please check your connection and try again.";
+        statusEl.className = "form-status error";
+        statusEl.style.display = "block";
+      })
+      .finally(function () {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Send Message";
+      });
+  }
+
   function setupContactForm() {
     var form = document.getElementById("contactForm");
     if (!form) return;
+
+    // Pre-load toxicity model in background
+    loadToxicityModel();
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -247,39 +310,27 @@
       }
 
       submitBtn.disabled = true;
-      submitBtn.textContent = "Sending...";
+      submitBtn.textContent = "Checking message...";
       statusEl.style.display = "none";
 
-      var formData = new FormData(form);
-      formData.delete("g-recaptcha-response");
+      var message = (form.elements.message.value || "").trim();
 
-      fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData
-      })
-        .then(function (res) { return res.json(); })
-        .then(function (data) {
-          if (data.success) {
-            statusEl.textContent = "Thank you! Your message has been sent. We'll respond within 2-3 business days.";
-            statusEl.className = "form-status success";
-            statusEl.style.display = "block";
-            form.reset();
-            if (typeof grecaptcha !== "undefined") grecaptcha.reset();
-          } else {
-            statusEl.textContent = "Something went wrong. Please try again or email us directly.";
-            statusEl.className = "form-status error";
-            statusEl.style.display = "block";
-          }
-        })
-        .catch(function () {
-          statusEl.textContent = "Network error. Please check your connection and try again.";
+      checkToxicity(message).then(function (flagged) {
+        if (flagged) {
+          statusEl.textContent = "Your message was flagged for inappropriate content. Please revise and try again.";
           statusEl.className = "form-status error";
           statusEl.style.display = "block";
-        })
-        .finally(function () {
           submitBtn.disabled = false;
           submitBtn.textContent = "Send Message";
-        });
+          return;
+        }
+        submitBtn.textContent = "Sending...";
+        submitForm(form, statusEl, submitBtn);
+      }).catch(function () {
+        // If toxicity check fails, still allow submission
+        submitBtn.textContent = "Sending...";
+        submitForm(form, statusEl, submitBtn);
+      });
     });
   }
 
